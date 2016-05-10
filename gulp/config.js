@@ -18,6 +18,7 @@ var config = {
 
       compass: {
         src: themes + "/default/sass/**/*.scss",
+        name: "joints-supperui",
         rbConfig: {
           sass: themes + "/default/sass",
           css: dest + "/css",

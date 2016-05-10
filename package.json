@@ -1,6 +1,6 @@
 {
   "name": "joints-supperui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ui designed for admin",
   "main": "./lib",
   "scripts": {
@@ -38,7 +38,9 @@
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
     "chai-immutable": "^1.5.4",
+    "del": "^2.2.0",
     "gulp": "^3.8.10",
+    "gulp-clean-css": "^2.0.7",
     "gulp-compass": "^2.1.0",
     "gulp-nodemon": "^2.0.6",
     "gulp-notify": "^2.1.0",
@@ -48,10 +50,11 @@
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.1",
     "mocha": "^2.4.5",
-    "rimraf": "^2.5.2",
     "require-dir": "^0.3.0",
+    "rimraf": "^2.5.2",
     "underscore": "^1.7.0",
     "vinyl-buffer": "^1.0.0",
+    "vinyl-paths": "^2.1.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.6.1"
   },

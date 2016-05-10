@@ -11,23 +11,26 @@ Joints SupperUI是专为后台管理应用构建的React UI控件库，主要包
 
 ## 使用
 
+组件基于react 0.13.3，使用时请注意确认相关react版本
+
+ - 安装
+
+```
+npm install joints-supperui --save
+```
+
  - 直接引用
 
-使用前注意需要先引用样式表 [purecss](http://purecss.io)以及[Font-Awesome icons](https://fortawesome.github.io/Font-Awesome/icons/)
+安装后会在安装项目下的node_modules/joints-supperui模块文件夹下生成dest目录
+请复制并引用目录下的css文件
 
 ```
 <link rel="stylesheet" type="text/css" href="/dest/css/pure-min.css">
 <link rel="stylesheet" type="text/css" href="/dest/css/grids-responsive.min.css">
 <link rel="stylesheet" type="text/css" href="/dest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/dest/css/joints-supperui.min.css">
 ```
 
-组件基于react 0.13.3，使用时请注意确认相关react版本
-
-- npm install
-
-```
-npm install joints-supperui --save
-```
 
 
 

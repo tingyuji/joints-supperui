@@ -1,5 +1,10 @@
 var gulp        = require('gulp');
 var compass     = require('gulp-compass');
+var cleanCSS    = require('gulp-clean-css');
+var rename      = require('gulp-rename');
+var del         = require('del');
+var vinylPaths  = require('vinyl-paths');
+
 var handleErrors = require('../util/handleErrors');
 var config = require('../config');
 
@@ -22,7 +27,14 @@ Object.keys(config.tasklines).forEach(function(tl){
         .pipe(
           compass(cfg.rbConfig)
           .on('error', handleErrors)
-        );
+        ).pipe(vinylPaths(del)) // 清除临时文件
+        .pipe(cleanCSS());
+
+      if(cfg.name){
+        pipeObj.pipe(rename(cfg.name + ".min.css"))
+      }
+
+      pipeObj.pipe(gulp.dest(cfg.rbConfig.css));
     });
   });
 });
