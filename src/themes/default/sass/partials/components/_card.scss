@@ -1,0 +1,46 @@
+.cmpt-card {
+  position: relative;
+  background: $bgColor;
+}
+
+.cmpt-card-media {
+  position: relative;
+
+  &>img {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    vertical-align: top;
+  }
+
+  .overlay-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .overlay {
+    height: 100%;
+    position: relative;
+  }
+
+  .overlay-content {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 8px;
+    background: rgba(0, 0, 0, 0.54);
+  }
+}
+
+.cmpt-card-title {
+  padding: 10px;
+}
+
+.cmpt-card-panel {
+  padding: 10px;
+}

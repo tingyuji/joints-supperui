@@ -1,0 +1,27 @@
+//*------------------------------------------------*/
+//* 平台图标样式
+//
+//* Created by Ray on 2016-03-02
+//*
+//* 描述：用于提供平台图标样式
+//*------------------------------------------------*/
+
+.icon {
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+//*==========  图标框  ==========*/
+
+$mIconSize: 25px;
+
+.icon-panel {
+  width: $mIconSize;
+  height: $mIconSize;
+  display: inline-block;
+}
+
+
+

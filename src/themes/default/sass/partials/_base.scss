@@ -1,0 +1,31 @@
+//*------------------------------------------------*/
+//* 平台基础样式
+//
+//* Created by Ray on 2016-03-02
+//*
+//* 描述：用于提供平台基础通用样式
+//*------------------------------------------------*/
+
+//*==========  基础元素样式  ==========*/
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  position: relative;
+  vertical-align: middle;
+  line-height: 1;
+  outline: 0;
+  box-sizing: border-box;
+}
+

@@ -1,0 +1,48 @@
+//*------------------------------------------------*/
+//* 平台样式变量
+//
+//* Created by Ray on 2016-03-02
+//*
+//* 描述：用于提供平台基础通用样式变量
+//*------------------------------------------------*/
+
+
+//*==========  变量  ==========*/
+
+//* 配色 */
+
+// 大面积使用，用于突出重要信息（用于导航的背景，账户信息模块背景，按钮、书签）
+$primaryColor: #2196f3;
+$primaryColor2: #2d3e50;
+$bgColor     : #ffffff;
+$maskColor   : rgba(0, 0, 0, 0.4);
+$borderColor : #e3e3e3;
+$fadeColor   : #fcfcfc;
+
+$successColor: #1CB841;
+$errorColor  : #CA3C3C;
+$warningColor: #DF7514;
+$infoColor   : #42B8DD;
+
+// 小面积使用，用于突出重要信息文字，按钮、图标（如何购买按钮、年化收益的数字等）
+$stressColor : #b71c1c;
+$stressFontSize: 14px;
+
+$warnColor   : #b71c1c;
+
+$fontColor   : #7f8c8d;
+// 小部分文字使用，用于标题或主要信息（用于产品的期限，金额，以及文字标题）
+$fontColor1  : #3D4449;
+// 小面积使用，用于内容文字及诠释信息
+$fontColor2  : #868B90;
+// 小面积使用(用于时间数字，金额文字等)
+$fontColor3  : #A8ACAF;
+// 用于提示（用于输入框提示文案）
+$fontColor4  : #CCCCCC;
+
+// 标题文字
+$titleFontColor: #ffffff;
+$titleFontSize : 16px;
+
+// 导航栏高度
+$navMenuHeight: 50px;
