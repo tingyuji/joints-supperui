@@ -5,12 +5,13 @@ var gulp = require('gulp');
 var config = require('../config');
 
 Object.keys(config.tasklines).forEach(function(tl){
-  gulp.task(tl, function(){
-    console.log();
-    console.log(new Date());
-    console.log("starting task line " + tl + " ...");
-    console.log();
+  var tlConfig = config.tasklines[tl];
 
-    gulp.task(tl, ['watch-' +  tl]);
-  });
+  var tasks = ["build-" + tl];
+
+  if(tlConfig.nodemon){
+    tasks.push("nodemon-" + tl);
+  }
+
+  gulp.task(tl, tasks);
 });

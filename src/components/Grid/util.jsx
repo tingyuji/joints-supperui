@@ -84,10 +84,12 @@ function generateOffset(width, key, responsive) {
 }
 
 function createStyle(text) {
-  let style = document.createElement('style');
-  style.type = 'text/css';
-  style.innerHTML = text
-  document.head.appendChild(style);
+  if((typeof document === "object") && document.createElement){
+    let style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = text
+    document.head.appendChild(style);
+  }
 }
 
 (function () {

@@ -1,0 +1,90 @@
+.cmpt-message-container {
+  position: fixed;
+  display: none;
+  z-index: 1050;
+  width: 500px;
+  /*
+  top: 0;
+  left: 50%;
+  margin-left: -250px;
+  */
+  right: -100%;
+  bottom: 0;
+
+  &.has-message {
+    right: 15px;
+    display: block;
+  }
+
+  .cmpt-overlay {
+    left: 0;
+    opacity: 0.01;
+  }
+
+  .cmpt-message {
+    position: relative;
+    z-index: 1051;
+    padding: 20px 40px 20px 20px;
+    color: #fff;
+    background: $primaryColor;
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    margin-bottom: 15px;
+    @include fadein();
+    transition: 0.45s;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    &.dismissed {
+      opacity: 0;
+    }
+
+    .close {
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      line-height: 1;
+      right: 0;
+      top: 0;
+      padding: 10px;
+      font-size: 20px;
+      outline: none;
+    }
+  }
+
+  .cmpt-message-success {
+    background: $successColor;
+  }
+
+  .cmpt-message-error {
+    background: $errorColor;
+  }
+
+  .cmpt-message-warning {
+    background: $warningColor;
+  }
+
+  .cmpt-message-info {
+    background: $infoColor;
+  }
+}
+
+@media (max-width: 767px) {
+  .cmpt-message-container {
+    bottom: 0;
+    width: 100%;
+
+    &.has-message {
+      top: 0;
+      margin: 0;
+      left: 0;
+    }
+
+    .cmpt-message {
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@mixin fade($animation-name, $start-opacity: 0, $end-opacity: 1, $start-height: 0, $end-height: 2000px, $duration: 0.45s) {
+   @keyframes #{$animation-name} {
+    from { 
+      opacity: $start-opacity;
+      max-height: $start-height;
+    }
+    to {
+      opacity: $end-opacity;
+      max-height: $end-height;
+    }
+  }
+ 
+  animation: $animation-name $duration ease;
+}
+
+@mixin fadein($duration: 0.45s) {
+  overflow: hidden;
+  @include fade(fadein, 0, 1, 0, 2000px, $duration);
+}
+
+@mixin fadeout($duration: 0.45s) {
+  overflow: hidden;
+  @include fade(fadeout, 1, 0, 2000px, 0, $duration);
+}
+
+@mixin wink($animation-name, $duration: 1s) {
+  @keyframes #{$animation-name} {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  animation: $animation-name $duration ease-in;
+}

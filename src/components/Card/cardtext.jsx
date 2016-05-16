@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import classNames from 'classnames';
 
 export class CardText extends React.Component {

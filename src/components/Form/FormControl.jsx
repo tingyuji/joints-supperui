@@ -2,12 +2,11 @@
 
 import React, { Component, PropTypes, cloneElement, Children } from 'react';
 import classnames from 'classnames';
+import { COMPONENTS, getValueType } from './enhance';
 import { forEach, shallowEqual, hashcode, merge } from '../../utils/obj';
 import { format } from '../../utils/str';
 import { getLang } from '../../locals';
 import { getGrid } from '../Grid/util';
-
-import { COMPONENTS, getValueType } from './enhance';
 
 function setHint(hints, key, value) {
   let text = getLang('validation.hints.' + key, null);
@@ -315,3 +314,4 @@ FormControl.defaultProps = {
 };
 
 module.exports = FormControl;
+

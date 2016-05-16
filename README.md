@@ -25,11 +25,30 @@ npm install joints-supperui --save
 请复制并引用目录下的css文件
 
 ```
-<link rel="stylesheet" type="text/css" href="/dest/css/pure-min.css">
-<link rel="stylesheet" type="text/css" href="/dest/css/grids-responsive.min.css">
-<link rel="stylesheet" type="text/css" href="/dest/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/dest/css/joints-supperui.min.css">
+<link rel="stylesheet" type="text/css" href="/css/pure-min.css">
+<link rel="stylesheet" type="text/css" href="/css/grids-responsive.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/joints-supperui.min.css">
 ```
+
+## 组件
+目前集成的组件，后续应该会不断加入新的组件并完善
+
+- [Button]
+- [Checkbox]
+- [Checkbox group]
+- [Radio group]
+- [Datetime]
+- [Form]
+- [Form Control]
+- [Icon]
+- [Modal]
+- [Upload]
+- [Message]
+- [Pagination](http://lobos.github.io/react-ui/#/pagination)
+- [Select](http://lobos.github.io/react-ui/#/select)
+- [Table](http://lobos.github.io/react-ui/#/table)
+- [Filter](http://lobos.github.io/react-ui/#/filter)
 
 
 

@@ -4,16 +4,16 @@
  * Created by Ray on 2016-03-30
  */
 
-import Divider      from './divider';
-import Avatar       from './avatar';
-import ImageGallery from './imageGallery';
+import Divider from './Divider';
+import Avatar  from './Avatar';
+import Tip     from './Tip';
 
 export {Divider};
 export {Avatar};
-export {ImageGallery};
+export {Tip};
 
 export default {
   Divider,
   Avatar,
-  ImageGallery
+  Tip
 };

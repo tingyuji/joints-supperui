@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import { forEach, deepEqual, hashcode, clone } from '../../utils/obj';
 import { getGrid } from '../Grid/util';
 import { getLang } from '../../locals';
-
+import { fetchEnhance, FETCH_SUCCESS } from '../_mixins/Fetch';
 import FormControl from './FormControl';
 import FormSubmit from './FormSubmit';
 
-export class Form extends Component {
+class Form extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -155,7 +155,7 @@ export class Form extends Component {
 
   renderChildren (children) {
     let { data } = this.state;
-    let { disabled } = this.props;
+    let { fetchStatus, disabled } = this.props;
 
     return Children.map(children, (child) => {
       if (!child) { return null; }
@@ -173,6 +173,9 @@ export class Form extends Component {
         props.formData = data;
       } else if (child.type === FormSubmit) {
         props.disabled = disabled;
+        if (fetchStatus !== FETCH_SUCCESS) {
+          props.children = getLang('fetch.status')[fetchStatus];
+        }
       } else if (child.props.children) {
         props.children = this.renderChildren(child.props.children);
       }
@@ -186,7 +189,7 @@ export class Form extends Component {
   }
 
   render () {
-    let { button, controls, children, className, onSubmit, grid, layout, ...props } = this.props;
+    let { button, controls, fetchStatus, children, className, onSubmit, grid, layout, ...props } = this.props;
 
     className = classnames(
       className,
@@ -204,6 +207,7 @@ export class Form extends Component {
         {controls && this.renderControls()}
         {this.renderChildren(children)}
         {button && this.renderButton(button)}
+        {fetchStatus !== FETCH_SUCCESS && <div className="cmpt-form-mask" />}
       </form>
     );
   }
@@ -217,6 +221,7 @@ Form.propTypes = {
   controls: PropTypes.array,
   data: PropTypes.object,
   disabled: PropTypes.bool,
+  fetchStatus: PropTypes.string,
   grid: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.object
@@ -233,4 +238,5 @@ Form.defaultProps = {
   disabled: false
 };
 
-module.exports = Form;
+module.exports = fetchEnhance(Form);
+

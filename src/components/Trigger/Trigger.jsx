@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import ReactDOM, { findDOMNode } from 'react-dom';
+import React, { PropTypes, findDOMNode } from 'react';
 import { createChainedFunction, Dom } from 'rc-util';
 import Popup from './Popup';
 import { getAlignFromPlacement, getPopupClassNameFromAlign } from './utils';
@@ -100,7 +99,7 @@ const Trigger = React.createClass({
     const state = this.state;
     if (this.popupRendered) {
       const self = this;
-      ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getPopupElement(),
+      React.unstable_renderSubtreeIntoContainer(this, this.getPopupElement(),
         this.getPopupContainer(), function renderPopup() {
           /* eslint react/no-is-mounted:0 */
           if (this.isMounted()) {
@@ -135,7 +134,7 @@ const Trigger = React.createClass({
   componentWillUnmount() {
     const popupContainer = this.popupContainer;
     if (popupContainer) {
-      ReactDOM.unmountComponentAtNode(popupContainer);
+      React.unmountComponentAtNode(popupContainer);
       popupContainer.parentNode.removeChild(popupContainer);
       this.popupContainer = null;
     }
@@ -220,7 +219,7 @@ const Trigger = React.createClass({
   },
 
   getRootDomNode() {
-    return ReactDOM.findDOMNode(this);
+    return React.findDOMNode(this);
   },
 
   getPopupContainer() {

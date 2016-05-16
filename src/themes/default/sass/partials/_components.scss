@@ -7,44 +7,27 @@
 //*------------------------------------------------*/
 
 //*==========  mixins  ==========*/
+@import "components/mixins/animate";
 @import "components/mixins/arrow";
 
 //*==========  components  ==========*/
-@import "components/overlay";
-@import "components/mask";
-@import "components/input";
-@import "components/upload";
-@import "components/switch";
-@import "components/modal";
-@import "components/datepicker";
-@import "components/select";
 @import "components/button";
-@import "components/checkbox";
 @import "components/card";
+@import "components/checkbox";
+@import "components/datepicker";
 @import "components/form_control";
-
-@import "components/image_gallery";
-
-.image-gallery {
-  div.image-gallery-image {
-    text-align: center;
-  }
-}
-
-//*==========  avatar  ==========*/
-.cmpt-avatar {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  display: inline-block;
-  border: solid 1px rgba(0, 0, 0, 0.08);
-}
-
-//*==========  divider  ==========*/
-.cmpt-divider {
-  border: 0px;
-  border-top: 1px solid $borderColor;
-}
+@import "components/input";
+@import "components/mask";
+@import "components/message";
+@import "components/modal";
+@import "components/overlay";
+@import "components/pagination";
+@import "components/rating";
+@import "components/select";
+@import "components/switch";
+@import "components/table";
+@import "components/upload";
+@import "components/widgets";
 
 
 

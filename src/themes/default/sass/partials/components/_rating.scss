@@ -1,0 +1,32 @@
+.cmpt-rating {
+  position: relative;
+  display: inline-block;
+
+  .cmpt
+
+  .cmpt-rating-front {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    overflow: hidden;
+
+    .cmpt-rating-inner {
+      width: 1000px;
+    }
+
+    .cmpt-rating-handle {
+      display: inline-block;
+      opacity: 0.01;
+      transition: opacity 0.3s;
+    }
+
+    .active {
+      opacity: 1;
+    }
+  }
+
+  .wink {
+    @include wink(wink, 0.3s);
+  }
+}

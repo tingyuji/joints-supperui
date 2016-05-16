@@ -47,3 +47,4 @@ module.exports = (Component) => class extends Component {
     return fn;
   }
 };
+

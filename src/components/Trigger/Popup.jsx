@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import Align from 'rc-align';
 import Animate from 'rc-animate';
 import PopupInner from './PopupInner';
@@ -36,7 +35,7 @@ const Popup = React.createClass({
   },
 
   getPopupDomNode() {
-    return ReactDOM.findDOMNode(this.refs.popup);
+    return React.findDOMNode(this.refs.popup);
   },
 
   getTarget() {

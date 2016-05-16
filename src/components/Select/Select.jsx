@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { toArray, substitute } from '../../utils/str';
 import { getOuterHeight, overView, withoutTransition } from '../../utils/dom';
 import { deepEqual, hashcode } from '../../utils/obj';
-import ClickAway from '../_mixins/clickAway';
+import ClickAway from '../_mixins/ClickAway';
 import { getGrid } from '../Grid/util';
 import { register } from '../Form';
 
