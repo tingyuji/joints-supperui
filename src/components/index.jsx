@@ -5,7 +5,6 @@
  */
 
 import {Icon} from './Icon';
-import {PageTitle, PagePanel} from './Page';
 import {Grid, GridUtil}       from './Grid';
 import {Card, CardHeader, CardTitle, CardMedia, CardText, CardPanel} from './Card';
 import {Overlay}    from './Overlay';
@@ -24,9 +23,6 @@ import {Table, TableHeader, Pagination} from './Table';
 import {Avatar, Divider, Tip} from './Widgets';
 
 export {Icon};
-
-export {PageTitle};
-export {PagePanel};
 
 export {Grid};
 export {GridUtil};
@@ -73,9 +69,6 @@ export {Tip};
 
 export default {
   Icon,
-
-  PageTitle, 
-  PagePanel,
 
   Grid, 
   GridUtil,

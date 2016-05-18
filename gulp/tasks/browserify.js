@@ -33,9 +33,20 @@ function browserifyTask(tl, config){
         entries: bundleConfig.entries,
         // Add file extentions to make optional in your requires
         extensions: config.extensions,
+        require: bundleConfig.requires,
         // Enable source maps!
         debug: config.debug
       });
+
+      if(bundleConfig.externals){
+        bundler.external(bundleConfig.externals);
+      }
+
+      if(bundleConfig.requires){
+        bundleConfig.requires.forEach(function(r){
+          bundler.require(r);
+        })
+      }
 
       var bundle = function() {
         // Log when bundling starts

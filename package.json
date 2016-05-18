@@ -29,6 +29,10 @@
     "url": "https://github.com/pistech/joints-supperui/issues"
   },
   "homepage": "https://github.com/pistech/joints-supperui#readme",
+  "peerDependencies": {
+    "classnames": "^2.2.3",
+    "pubsub-js": "^1.5.3"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
@@ -57,7 +61,10 @@
     "history": "^1.17.0",
     "isomorphic-fetch": "^2.2.1",
     "mocha": "^2.4.5",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8",
     "react-router": "^1.0.0",
+    "react-title-component": "^1.0.1",
     "require-dir": "^0.3.0",
     "rimraf": "^2.5.2",
     "underscore": "^1.7.0",
@@ -65,12 +72,5 @@
     "vinyl-paths": "^2.1.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.6.1"
-  },
-  "dependencies": {
-    "classnames": "^2.2.3",
-    "pubsub-js": "^1.5.2",
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8",
-    "react-title-component": "^1.0.1"
   }
 }

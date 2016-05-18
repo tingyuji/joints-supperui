@@ -18,6 +18,24 @@ var config = {
         dest: dest
       },
 
+      browserify: {
+        bundleConfigs: [{
+          entries: src + '/index.jsx',
+          dest: dest + "/js",
+          externals: ['react', 'react-dom'],
+          compress: true,
+          outputName: 'supperui.js',
+          compressedOutputName: 'supperui.min.js'
+        }, {
+          dest: dest + "/js",
+          requires: ['react', 'react-dom'],
+          compress: true,
+          outputName: 'supperui-lib.js',
+          compressedOutputName: 'supperui-lib.min.js'
+        }],
+        extensions: ['.jsx', '.js'],
+      },
+
       compass: {
         src: themes + "/default/sass/**/*.scss",
         name: "joints-supperui",
