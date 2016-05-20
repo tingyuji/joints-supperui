@@ -16,7 +16,10 @@ import {Input}      from './Input';
 import {Textarea}   from './Textarea';
 import {Upload}     from './Upload';
 import {Rating}     from './Rating';
-import {Datepicker, DatepickerPair} from './Datepicker';
+
+import Datepicker  from './Datepicker';
+import DatepickerPair from './Datepicker/Pair';
+
 import {Checkbox, CheckboxGroup, Radio, RadioGroup} from './Checkbox';
 import {Form, FormItem, FormControl, FormSubmit} from './Form';
 import {Table, TableHeader, Pagination} from './Table';
@@ -47,6 +50,7 @@ export {Upload};
 export {Rating};
 
 export {Datepicker};
+export const Datetime = Datepicker;
 export {DatepickerPair};
 
 export {Checkbox};
@@ -93,6 +97,7 @@ export default {
   Rating,
 
   Datepicker,
+  Datetime: Datepicker,
   DatepickerPair,
 
   Checkbox,

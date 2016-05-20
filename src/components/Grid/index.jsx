@@ -4,7 +4,7 @@
  * Created by Ray on 2016-03-30
  */
 
-import Grid from './grid';
+import Grid from './Grid';
 import GridUtil from './util';
 
 export {Grid};

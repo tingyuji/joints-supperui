@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import {Overlay} from '../Overlay'
 import PubSub from 'pubsub-js'
 
+const CALLBACK_MESSAGE = "CALLBACK_MESSAGE"
 const ADD_MESSAGE = "EB3A79637B40"
 const REMOVE_MESSAGE = "73D4EF15DF50"
 const CLEAR_MESSAGE = "73D4EF15DF52"
@@ -56,14 +57,34 @@ export default class Message extends React.Component {
     messages: React.PropTypes.array
   }
 
-  static show (content, type) {
+  static show (content, type, cb) {
     if (!messageContainer) {
       createContainer()
     }
+
     PubSub.publish(ADD_MESSAGE, {
       content: content,
       type: type || 'info'
     })
+
+    if(typeof cb === "function"){
+      PubSub.publish(CALLBACK_MESSAGE, cb, {
+        content: content,
+        type: type || 'info'
+      })
+    }
+  }
+
+  static success(content, cb) {
+    Message.show(content, "success", cb)
+  }
+
+  static error(content, cb) {
+    Message.show(content, "error", cb)
+  }
+
+  static warning(content, cb) {
+    Message.show(content, "warning", cb)
   }
 
   dismiss (index) {
@@ -104,6 +125,12 @@ function createContainer () {
   messageContainer = document.createElement('div')
   document.body.appendChild(messageContainer)
 }
+
+PubSub.subscribe(CALLBACK_MESSAGE, (topic, cb, data) => {
+  if(typeof cb === "function") {
+    cb(topic, data);
+  }
+})
 
 PubSub.subscribe(ADD_MESSAGE, (topic, data) => {
   messages = [...messages, data]

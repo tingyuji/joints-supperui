@@ -7,9 +7,11 @@ import { getOuterHeight, overView, withoutTransition } from '../../utils/dom';
 import { deepEqual, hashcode } from '../../utils/obj';
 import ClickAway from '../_mixins/ClickAway';
 import { getGrid } from '../Grid/util';
-import { register } from '../Form';
+import { fetchEnhance, FETCH_SUCCESS } from '../_mixins/Fetch';
+import { register } from '../Form/enhance';
+import { getLang } from '../../locals';
 
-export class Select extends ClickAway(Component) {
+class Select extends ClickAway(Component) {
   constructor (props) {
     super(props);
 
@@ -200,7 +202,7 @@ export class Select extends ClickAway(Component) {
     if (this.props.filterAble) {
       return (
         <div className="filter">
-          <i className="search fa fa-search" />
+          <i className="search" />
           <input value={this.state.filter}
             onChange={ (e) => this.setState({ filter: e.target.value }) }
             type="text" />
@@ -226,6 +228,11 @@ export class Select extends ClickAway(Component) {
         single: !mult
       }
     );
+   
+    // if get remote data pending or failure, render message
+    if (fetchStatus !== FETCH_SUCCESS) {
+      return <div className={className}>{getLang('fetch.status')[fetchStatus]}</div>;
+    }
 
     let filterText = filter ? filter.toLowerCase() : null;
 
@@ -318,4 +325,7 @@ Select.defaultProps = {
   valueTpl: '{id}'
 };
 
+Select = fetchEnhance(Select);
+
 module.exports = register(Select, 'select', {valueType: 'array'});
+

@@ -485,7 +485,7 @@ Button.propTypes = {
 
 module.exports = Button;
 
-},{"../Grid/util":34,"classnames":1,"react":"react"}],5:[function(require,module,exports){
+},{"../Grid/util":33,"classnames":1,"react":"react"}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1157,7 +1157,7 @@ module.exports = (0, _Form.register)(Checkbox, 'checkbox');
 // export for CheckboxGroup
 module.exports.Checkbox = Checkbox;
 
-},{"../Form":30,"classnames":1,"react":"react"}],14:[function(require,module,exports){
+},{"../Form":29,"classnames":1,"react":"react"}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1363,7 +1363,7 @@ CheckboxGroup.defaultProps = {
 
 module.exports = (0, _Form.register)(CheckboxGroup, 'checkbox-group', { valueType: 'array' });
 
-},{"../../utils/obj":77,"../../utils/str":79,"../Form":30,"./checkbox":13,"classnames":1,"react":"react"}],15:[function(require,module,exports){
+},{"../../utils/obj":76,"../../utils/str":78,"../Form":29,"./checkbox":13,"classnames":1,"react":"react"}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1658,7 +1658,7 @@ RadioGroup.defaultProps = {
 
 module.exports = (0, _Form.register)(RadioGroup, 'radio-group');
 
-},{"../../utils/obj":77,"../Form":30,"./radio":16,"classnames":1,"react":"react"}],18:[function(require,module,exports){
+},{"../../utils/obj":76,"../Form":29,"./radio":16,"classnames":1,"react":"react"}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1859,58 +1859,7 @@ Clock.propTypes = {
 
 exports.default = Clock;
 
-},{"./util":24,"classnames":1,"react":"react"}],19:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Datetime = require('./Datetime');
-
-var _Datetime2 = _interopRequireDefault(_Datetime);
-
-var _obj = require('../../utils/obj');
-
-var _enhance = require('../Form/enhance');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Datepicker = function (_React$Component) {
-  _inherits(Datepicker, _React$Component);
-
-  function Datepicker(props) {
-    _classCallCheck(this, Datepicker);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Datepicker).call(this, props));
-  }
-
-  _createClass(Datepicker, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps) {
-      return !(0, _obj.shallowEqual)(this.props, nextProps);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(_Datetime2.default, this.props);
-    }
-  }]);
-
-  return Datepicker;
-}(_react2.default.Component);
-
-module.exports = (0, _enhance.register)(Datepicker, ['datetime', 'time', 'date'], { valueType: 'datetime' });
-
-},{"../../utils/obj":77,"../Form/enhance":29,"./Datetime":20,"react":"react"}],20:[function(require,module,exports){
+},{"./util":23,"classnames":1,"react":"react"}],19:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2068,9 +2017,6 @@ var Datetime = function (_ClickAway) {
       today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
       var picker = this.refs.datepicker;
-      if (!picker.style) {
-        picker.style = {};
-      }
       picker.style.display = 'block';
       var height = (0, _dom.getOuterHeight)(picker);
 
@@ -2101,9 +2047,6 @@ var Datetime = function (_ClickAway) {
       }
       setTimeout(function () {
         if (_this3.state.active === false) {
-          if (!_this3.refs.datepicker.style) {
-            _this3.refs.datepicker.style = {};
-          }
           _this3.refs.datepicker.style.display = 'none';
         }
       }, 500);
@@ -2520,7 +2463,7 @@ Datetime.defaultProps = {
 
 module.exports = Datetime;
 
-},{"../../locals":69,"../../utils/dom":75,"../../utils/dt":76,"../_mixins/ClickAway":61,"./Clock":18,"./TimeSet":22,"classnames":1,"react":"react"}],21:[function(require,module,exports){
+},{"../../locals":68,"../../utils/dom":74,"../../utils/dt":75,"../_mixins/ClickAway":60,"./Clock":18,"./TimeSet":21,"classnames":1,"react":"react"}],20:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2534,6 +2477,8 @@ var _react2 = _interopRequireDefault(_react);
 var _obj = require('../../utils/obj');
 
 var _index = require('./index');
+
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2578,14 +2523,14 @@ var Pair = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_index.Datepicker, _extends({ min: min, name: names[0] }, other, {
+        _react2.default.createElement(_index2.default, _extends({ min: min, name: names[0] }, other, {
           max: this.state.second,
           onChange: function onChange(first) {
             return _this2.setState({ first: first });
           }
         })),
         con,
-        _react2.default.createElement(_index.Datepicker, _extends({ max: max, name: names[1] }, other, {
+        _react2.default.createElement(_index2.default, _extends({ max: max, name: names[1] }, other, {
           min: this.state.first,
           onChange: function onChange(second) {
             return _this2.setState({ second: second });
@@ -2616,7 +2561,7 @@ Pair.defaultProps = {
 
 module.exports = Pair;
 
-},{"../../utils/obj":77,"./index":23,"react":"react"}],22:[function(require,module,exports){
+},{"../../utils/obj":76,"./index":22,"react":"react"}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2746,32 +2691,58 @@ TimeSet.propTypes = {
 
 exports.default = TimeSet;
 
-},{"react":"react"}],23:[function(require,module,exports){
+},{"react":"react"}],22:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DatepickerPair = exports.Datepicker = undefined;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Datepicker = require('./Datepicker');
+var _react = require('react');
 
-var _Datepicker2 = _interopRequireDefault(_Datepicker);
+var _react2 = _interopRequireDefault(_react);
 
-var _Pair = require('./Pair');
+var _Datetime = require('./Datetime');
 
-var _Pair2 = _interopRequireDefault(_Pair);
+var _Datetime2 = _interopRequireDefault(_Datetime);
+
+var _obj = require('../../utils/obj');
+
+var _enhance = require('../Form/enhance');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.Datepicker = _Datepicker2.default;
-exports.DatepickerPair = _Pair2.default;
-exports.default = {
-  Datepicker: _Datepicker2.default,
-  DatepickerPair: _Pair2.default
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-},{"./Datepicker":19,"./Pair":21}],24:[function(require,module,exports){
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Datepicker = function (_React$Component) {
+  _inherits(Datepicker, _React$Component);
+
+  function Datepicker(props) {
+    _classCallCheck(this, Datepicker);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Datepicker).call(this, props));
+  }
+
+  _createClass(Datepicker, [{
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps) {
+      return !(0, _obj.shallowEqual)(this.props, nextProps);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_Datetime2.default, this.props);
+    }
+  }]);
+
+  return Datepicker;
+}(_react2.default.Component);
+
+module.exports = (0, _enhance.register)(Datepicker, ['datetime', 'time', 'date'], { valueType: 'datetime' });
+
+},{"../../utils/obj":76,"../Form/enhance":28,"./Datetime":19,"react":"react"}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2805,7 +2776,7 @@ function getPositions(count) {
   return pos;
 }
 
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -3128,7 +3099,7 @@ Form.defaultProps = {
 
 module.exports = (0, _Fetch.fetchEnhance)(Form);
 
-},{"../../locals":69,"../../utils/obj":77,"../Grid/util":34,"../_mixins/Fetch":62,"./FormControl":26,"./FormSubmit":28,"classnames":1,"react":"react"}],26:[function(require,module,exports){
+},{"../../locals":68,"../../utils/obj":76,"../Grid/util":33,"../_mixins/Fetch":61,"./FormControl":25,"./FormSubmit":27,"classnames":1,"react":"react"}],25:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -3533,7 +3504,7 @@ FormControl.defaultProps = {
 
 module.exports = FormControl;
 
-},{"../../locals":69,"../../utils/obj":77,"../../utils/str":79,"../Grid/util":34,"./enhance":29,"classnames":1,"react":"react"}],27:[function(require,module,exports){
+},{"../../locals":68,"../../utils/obj":76,"../../utils/str":78,"../Grid/util":33,"./enhance":28,"classnames":1,"react":"react"}],26:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -3593,7 +3564,7 @@ FormItem.propTypes = {
 
 module.exports = (0, _enhance.enhance)(FormItem);
 
-},{"./enhance":29,"react":"react"}],28:[function(require,module,exports){
+},{"./enhance":28,"react":"react"}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3666,7 +3637,7 @@ FormSubmit.propTypes = {
 
 module.exports = FormSubmit;
 
-},{"../button":64,"react":"react"}],29:[function(require,module,exports){
+},{"../button":63,"react":"react"}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4005,7 +3976,7 @@ function getValue(props) {
   return value;
 }
 
-},{"../../utils/obj":77,"../../utils/str":79,"./util":31,"classnames":1,"react":"react"}],30:[function(require,module,exports){
+},{"../../utils/obj":76,"../../utils/str":78,"./util":30,"classnames":1,"react":"react"}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4045,7 +4016,7 @@ exports.default = {
   FormSubmit: _FormSubmit2.default
 };
 
-},{"./Form":25,"./FormControl":26,"./FormItem":27,"./FormSubmit":28,"./enhance":29}],31:[function(require,module,exports){
+},{"./Form":24,"./FormControl":25,"./FormItem":26,"./FormSubmit":27,"./enhance":28}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4148,7 +4119,7 @@ function validate(value, valueType, _ref) {
   return true;
 };
 
-},{"../../locals":69,"../../utils/regex":78,"../../utils/str":79}],32:[function(require,module,exports){
+},{"../../locals":68,"../../utils/regex":77,"../../utils/str":78}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4221,7 +4192,7 @@ Grid.propTypes = {
 
 module.exports = Grid;
 
-},{"./util":34,"classnames":1,"react":"react"}],33:[function(require,module,exports){
+},{"./util":33,"classnames":1,"react":"react"}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4229,9 +4200,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GridUtil = exports.Grid = undefined;
 
-var _grid = require('./grid');
+var _Grid = require('./Grid');
 
-var _grid2 = _interopRequireDefault(_grid);
+var _Grid2 = _interopRequireDefault(_Grid);
 
 var _util = require('./util');
 
@@ -4245,14 +4216,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Created by Ray on 2016-03-30
  */
 
-exports.Grid = _grid2.default;
+exports.Grid = _Grid2.default;
 exports.GridUtil = _util2.default;
 exports.default = {
-  Grid: _grid2.default,
+  Grid: _Grid2.default,
   GridUtil: _util2.default
 };
 
-},{"./grid":32,"./util":34}],34:[function(require,module,exports){
+},{"./Grid":31,"./util":33}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4375,7 +4346,7 @@ exports.default = {
   getGrid: getGrid
 };
 
-},{}],35:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4485,7 +4456,7 @@ exports.default = {
   Icon: Icon
 };
 
-},{"classnames":1,"react":"react"}],36:[function(require,module,exports){
+},{"classnames":1,"react":"react"}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4637,7 +4608,7 @@ Input.defaultProps = {
 
 module.exports = (0, _Form.register)(Input, ['text', 'mobile', 'email', 'alpha', 'alphanum', 'password', 'url', 'integer', 'number']);
 
-},{"../../utils/regex":78,"../Form":30,"../Grid/util":34,"classnames":1,"react":"react"}],37:[function(require,module,exports){
+},{"../../utils/regex":77,"../Form":29,"../Grid/util":33,"classnames":1,"react":"react"}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4656,7 +4627,7 @@ exports.default = {
   Input: _Input2.default
 };
 
-},{"./Input":36}],38:[function(require,module,exports){
+},{"./Input":35}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4788,7 +4759,7 @@ var Message = function (_React$Component2) {
     }
   }], [{
     key: 'show',
-    value: function show(content, type) {
+    value: function show(content, type, cb) {
       if (!messageContainer) {
         createContainer();
       }
@@ -4796,6 +4767,25 @@ var Message = function (_React$Component2) {
         content: content,
         type: type || 'info'
       });
+
+      if (typeof cb === "function") {
+        cb();
+      }
+    }
+  }, {
+    key: 'success',
+    value: function success(content, cb) {
+      show(content, "success", cb);
+    }
+  }, {
+    key: 'error',
+    value: function error(content) {
+      show(content, "error", cb);
+    }
+  }, {
+    key: 'warning',
+    value: function warning(content) {
+      show(content, "warning", cb);
     }
   }]);
 
@@ -4841,7 +4831,7 @@ _pubsubJs2.default.subscribe(CLEAR_MESSAGE, function () {
   }, 400);
 });
 
-},{"../Overlay":43,"classnames":1,"pubsub-js":3,"react":"react","react-dom":"react-dom"}],39:[function(require,module,exports){
+},{"../Overlay":42,"classnames":1,"pubsub-js":3,"react":"react","react-dom":"react-dom"}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4860,7 +4850,7 @@ exports.default = {
   Message: _Message2.default
 };
 
-},{"./Message":38}],40:[function(require,module,exports){
+},{"./Message":37}],39:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -5237,7 +5227,7 @@ Modal.close = close;
 
 module.exports = Modal;
 
-},{"../../locals":69,"../../utils/str":79,"../button":64,"../overlay":67,"classnames":1,"object-assign":2,"pubsub-js":3,"react":"react","react-dom":"react-dom"}],41:[function(require,module,exports){
+},{"../../locals":68,"../../utils/str":78,"../button":63,"../overlay":66,"classnames":1,"object-assign":2,"pubsub-js":3,"react":"react","react-dom":"react-dom"}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5256,7 +5246,7 @@ exports.default = {
   Modal: _Modal2.default
 };
 
-},{"./Modal":40}],42:[function(require,module,exports){
+},{"./Modal":39}],41:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -5310,7 +5300,7 @@ Overlay.defaultProps = {
 
 module.exports = Overlay;
 
-},{"classnames":1,"react":"react"}],43:[function(require,module,exports){
+},{"classnames":1,"react":"react"}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5329,7 +5319,7 @@ exports.default = {
   Overlay: _Overlay2.default
 };
 
-},{"./Overlay":42}],44:[function(require,module,exports){
+},{"./Overlay":41}],43:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -5539,7 +5529,7 @@ Rating.register = function (key, icons) {
 
 module.exports = Rating;
 
-},{"../Form/enhance":29,"classnames":1,"react":"react"}],45:[function(require,module,exports){
+},{"../Form/enhance":28,"classnames":1,"react":"react"}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5558,13 +5548,8 @@ exports.default = {
   Rating: _Rating2.default
 };
 
-},{"./Rating":44}],46:[function(require,module,exports){
+},{"./Rating":43}],45:[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Select = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -5592,7 +5577,11 @@ var _ClickAway3 = _interopRequireDefault(_ClickAway2);
 
 var _util = require('../Grid/util');
 
-var _Form = require('../Form');
+var _Fetch = require('../_mixins/Fetch');
+
+var _enhance = require('../Form/enhance');
+
+var _locals = require('../../locals');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5602,7 +5591,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Select = exports.Select = function (_ClickAway) {
+var Select = function (_ClickAway) {
   _inherits(Select, _ClickAway);
 
   function Select(props) {
@@ -5830,7 +5819,7 @@ var Select = exports.Select = function (_ClickAway) {
         return _react2.default.createElement(
           'div',
           { className: 'filter' },
-          _react2.default.createElement('i', { className: 'search fa fa-search' }),
+          _react2.default.createElement('i', { className: 'search' }),
           _react2.default.createElement('input', { value: this.state.filter,
             onChange: function onChange(e) {
               return _this6.setState({ filter: e.target.value });
@@ -5866,6 +5855,15 @@ var Select = exports.Select = function (_ClickAway) {
         dropup: this.state.dropup,
         single: !mult
       });
+
+      // if get remote data pending or failure, render message
+      if (fetchStatus !== _Fetch.FETCH_SUCCESS) {
+        return _react2.default.createElement(
+          'div',
+          { className: className },
+          (0, _locals.getLang)('fetch.status')[fetchStatus]
+        );
+      }
 
       var filterText = filter ? filter.toLowerCase() : null;
 
@@ -5959,9 +5957,11 @@ Select.defaultProps = {
   valueTpl: '{id}'
 };
 
-module.exports = (0, _Form.register)(Select, 'select', { valueType: 'array' });
+Select = (0, _Fetch.fetchEnhance)(Select);
 
-},{"../../utils/dom":75,"../../utils/obj":77,"../../utils/str":79,"../Form":30,"../Grid/util":34,"../_mixins/ClickAway":61,"classnames":1,"react":"react"}],47:[function(require,module,exports){
+module.exports = (0, _enhance.register)(Select, 'select', { valueType: 'array' });
+
+},{"../../locals":68,"../../utils/dom":74,"../../utils/obj":76,"../../utils/str":78,"../Form/enhance":28,"../Grid/util":33,"../_mixins/ClickAway":60,"../_mixins/Fetch":61,"classnames":1,"react":"react"}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5980,7 +5980,7 @@ exports.default = {
   Select: _Select2.default
 };
 
-},{"./Select":46}],48:[function(require,module,exports){
+},{"./Select":45}],47:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -6254,7 +6254,7 @@ Pagination.defaultProps = {
 
 module.exports = Pagination;
 
-},{"../../utils/obj":77,"classnames":1,"react":"react"}],49:[function(require,module,exports){
+},{"../../utils/obj":76,"classnames":1,"react":"react"}],48:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -6684,7 +6684,7 @@ Table.defaultProps = {
 
 module.exports = (0, _Fetch.fetchEnhance)(Table);
 
-},{"../../utils/obj":77,"../../utils/str":79,"../_mixins/Fetch":62,"./TableHeader":50,"classnames":1,"react":"react"}],50:[function(require,module,exports){
+},{"../../utils/obj":76,"../../utils/str":78,"../_mixins/Fetch":61,"./TableHeader":49,"classnames":1,"react":"react"}],49:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -6771,7 +6771,7 @@ TableHeader.defaultProps = {
 
 module.exports = TableHeader;
 
-},{"classnames":1,"react":"react"}],51:[function(require,module,exports){
+},{"classnames":1,"react":"react"}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6802,7 +6802,7 @@ exports.default = {
   Table: _Table2.default
 };
 
-},{"./Pagination":48,"./Table":49,"./TableHeader":50}],52:[function(require,module,exports){
+},{"./Pagination":47,"./Table":48,"./TableHeader":49}],51:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -6973,7 +6973,7 @@ Textarea.defaultProps = {
 
 module.exports = (0, _enhance.register)(Textarea, ['textarea']);
 
-},{"../../utils/dom":75,"../Form/enhance":29,"../Grid/util":34,"classnames":1,"react":"react"}],53:[function(require,module,exports){
+},{"../../utils/dom":74,"../Form/enhance":28,"../Grid/util":33,"classnames":1,"react":"react"}],52:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6992,7 +6992,7 @@ exports.default = {
   Textarea: _Textarea2.default
 };
 
-},{"./Textarea":52}],54:[function(require,module,exports){
+},{"./Textarea":51}],53:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7016,7 +7016,7 @@ exports.default = {
   Upload: _upload2.default
 };
 
-},{"./upload":55}],55:[function(require,module,exports){
+},{"./upload":54}],54:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -7326,7 +7326,7 @@ Upload.defaultProps = {
 
 module.exports = (0, _enhance.register)(Upload, 'upload', { valueType: 'array' });
 
-},{"../../locals":69,"../../utils/dom":75,"../../utils/str":79,"../Form/enhance":29,"../Grid/util":34,"./util":56,"classnames":1,"react":"react"}],56:[function(require,module,exports){
+},{"../../locals":68,"../../utils/dom":74,"../../utils/str":78,"../Form/enhance":28,"../Grid/util":33,"./util":55,"classnames":1,"react":"react"}],55:[function(require,module,exports){
 'use strict';
 
 function createCORSRequest(method, url) {
@@ -7382,7 +7382,7 @@ module.exports = function (args, callback) {
   return ajaxUpload(args, callback);
 };
 
-},{}],57:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7458,7 +7458,7 @@ var Avatar = exports.Avatar = function (_React$Component) {
 
 exports.default = Avatar;
 
-},{"classnames":1,"react":"react"}],58:[function(require,module,exports){
+},{"classnames":1,"react":"react"}],57:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7525,7 +7525,7 @@ var Divider = exports.Divider = function (_React$Component) {
 
 exports.default = Divider;
 
-},{"classnames":1,"react":"react"}],59:[function(require,module,exports){
+},{"classnames":1,"react":"react"}],58:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -7649,7 +7649,7 @@ Tip.propTypes = {
 
 module.exports = Tip;
 
-},{"../_mixins/ClickAway":61,"classnames":1,"react":"react"}],60:[function(require,module,exports){
+},{"../_mixins/ClickAway":60,"classnames":1,"react":"react"}],59:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7685,7 +7685,7 @@ exports.default = {
   Tip: _Tip2.default
 };
 
-},{"./Avatar":57,"./Divider":58,"./Tip":59}],61:[function(require,module,exports){
+},{"./Avatar":56,"./Divider":57,"./Tip":58}],60:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -7768,7 +7768,7 @@ module.exports = function (Component) {
   }(Component);
 };
 
-},{"../../utils/dom":75,"react-dom":"react-dom"}],62:[function(require,module,exports){
+},{"../../utils/dom":74,"react-dom":"react-dom"}],61:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7964,17 +7964,17 @@ var fetchEnhance = exports.fetchEnhance = function fetchEnhance(ComposedComponen
   return Fetch;
 };
 
-},{"../../utils/obj":77,"react":"react"}],63:[function(require,module,exports){
+},{"../../utils/obj":76,"react":"react"}],62:[function(require,module,exports){
 arguments[4][4][0].apply(exports,arguments)
-},{"../Grid/util":34,"classnames":1,"dup":4,"react":"react"}],64:[function(require,module,exports){
+},{"../Grid/util":33,"classnames":1,"dup":4,"react":"react"}],63:[function(require,module,exports){
 arguments[4][5][0].apply(exports,arguments)
-},{"./Button":63,"dup":5,"react":"react"}],65:[function(require,module,exports){
+},{"./Button":62,"dup":5,"react":"react"}],64:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tip = exports.Divider = exports.Avatar = exports.Pagination = exports.TableHeader = exports.Table = exports.FormSubmit = exports.FormControl = exports.FormItem = exports.Form = exports.RadioGroup = exports.Radio = exports.CheckboxGroup = exports.Checkbox = exports.DatepickerPair = exports.Datepicker = exports.Rating = exports.Upload = exports.Textarea = exports.Input = exports.Select = exports.Button = exports.Message = exports.Modal = exports.Overlay = exports.CardPanel = exports.CardText = exports.CardMedia = exports.CardTitle = exports.CardHeader = exports.Card = exports.GridUtil = exports.Grid = exports.Icon = undefined;
+exports.Tip = exports.Divider = exports.Avatar = exports.Pagination = exports.TableHeader = exports.Table = exports.FormSubmit = exports.FormControl = exports.FormItem = exports.Form = exports.RadioGroup = exports.Radio = exports.CheckboxGroup = exports.Checkbox = exports.DatepickerPair = exports.Datetime = exports.Datepicker = exports.Rating = exports.Upload = exports.Textarea = exports.Input = exports.Select = exports.Button = exports.Message = exports.Modal = exports.Overlay = exports.CardPanel = exports.CardText = exports.CardMedia = exports.CardTitle = exports.CardHeader = exports.Card = exports.GridUtil = exports.Grid = exports.Icon = undefined;
 
 var _Icon = require('./Icon');
 
@@ -8002,6 +8002,12 @@ var _Rating = require('./Rating');
 
 var _Datepicker = require('./Datepicker');
 
+var _Datepicker2 = _interopRequireDefault(_Datepicker);
+
+var _Pair = require('./Datepicker/Pair');
+
+var _Pair2 = _interopRequireDefault(_Pair);
+
 var _Checkbox = require('./Checkbox');
 
 var _Form = require('./Form');
@@ -8010,12 +8016,15 @@ var _Table = require('./Table');
 
 var _Widgets = require('./Widgets');
 
-exports.Icon = _Icon.Icon; /**
-                            * 控件整合
-                            * 
-                            * Created by Ray on 2016-03-30
-                            */
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * 控件整合
+ * 
+ * Created by Ray on 2016-03-30
+ */
+
+exports.Icon = _Icon.Icon;
 exports.Grid = _Grid.Grid;
 exports.GridUtil = _Grid.GridUtil;
 exports.Card = _Card.Card;
@@ -8033,8 +8042,9 @@ exports.Input = _Input.Input;
 exports.Textarea = _Textarea.Textarea;
 exports.Upload = _Upload.Upload;
 exports.Rating = _Rating.Rating;
-exports.Datepicker = _Datepicker.Datepicker;
-exports.DatepickerPair = _Datepicker.DatepickerPair;
+exports.Datepicker = _Datepicker2.default;
+var Datetime = exports.Datetime = _Datepicker2.default;
+exports.DatepickerPair = _Pair2.default;
 exports.Checkbox = _Checkbox.Checkbox;
 exports.CheckboxGroup = _Checkbox.CheckboxGroup;
 exports.Radio = _Checkbox.Radio;
@@ -8074,8 +8084,9 @@ exports.default = {
   Upload: _Upload.Upload,
   Rating: _Rating.Rating,
 
-  Datepicker: _Datepicker.Datepicker,
-  DatepickerPair: _Datepicker.DatepickerPair,
+  Datepicker: _Datepicker2.default,
+  Datetime: _Datepicker2.default,
+  DatepickerPair: _Pair2.default,
 
   Checkbox: _Checkbox.Checkbox,
   CheckboxGroup: _Checkbox.CheckboxGroup,
@@ -8096,11 +8107,11 @@ exports.default = {
   Tip: _Widgets.Tip
 };
 
-},{"./Button":5,"./Card":12,"./Checkbox":15,"./Datepicker":23,"./Form":30,"./Grid":33,"./Icon":35,"./Input":37,"./Message":39,"./Modal":41,"./Overlay":43,"./Rating":45,"./Select":47,"./Table":51,"./Textarea":53,"./Upload":54,"./Widgets":60}],66:[function(require,module,exports){
+},{"./Button":5,"./Card":12,"./Checkbox":15,"./Datepicker":22,"./Datepicker/Pair":20,"./Form":29,"./Grid":32,"./Icon":34,"./Input":36,"./Message":38,"./Modal":40,"./Overlay":42,"./Rating":44,"./Select":46,"./Table":50,"./Textarea":52,"./Upload":53,"./Widgets":59}],65:[function(require,module,exports){
+arguments[4][41][0].apply(exports,arguments)
+},{"classnames":1,"dup":41,"react":"react"}],66:[function(require,module,exports){
 arguments[4][42][0].apply(exports,arguments)
-},{"classnames":1,"dup":42,"react":"react"}],67:[function(require,module,exports){
-arguments[4][43][0].apply(exports,arguments)
-},{"./Overlay":66,"dup":43}],68:[function(require,module,exports){
+},{"./Overlay":65,"dup":42}],67:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -8139,7 +8150,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 })();
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components":65,"react":"react","react-dom":"react-dom"}],69:[function(require,module,exports){
+},{"./components":64,"react":"react","react-dom":"react-dom"}],68:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8198,7 +8209,7 @@ function setLocation(location) {
   }
 }
 
-},{"../utils/obj":77,"./zh-cn":73}],70:[function(require,module,exports){
+},{"../utils/obj":76,"./zh-cn":72}],69:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -8216,7 +8227,7 @@ module.exports = {
   }
 };
 
-},{}],71:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -8236,7 +8247,7 @@ module.exports = {
   }
 };
 
-},{}],72:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -8249,7 +8260,7 @@ module.exports = {
   }
 };
 
-},{}],73:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8271,7 +8282,7 @@ exports.default = {
   validation: _validation.validation
 };
 
-},{"./buttons":70,"./datetime":71,"./fetch":72,"./validation":74}],74:[function(require,module,exports){
+},{"./buttons":69,"./datetime":70,"./fetch":71,"./validation":73}],73:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -8325,7 +8336,7 @@ module.exports = {
   }
 };
 
-},{}],75:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8484,7 +8495,7 @@ exports.default = {
   onEvent: onEvent, offEvent: offEvent, onceEvent: onceEvent
 };
 
-},{}],76:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8689,7 +8700,7 @@ function convert(obj, def) {
   return obj;
 }
 
-},{"../locals":69}],77:[function(require,module,exports){
+},{"../locals":68}],76:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9007,7 +9018,7 @@ function clone(obj) {
   }
 }
 
-},{"./str":79}],78:[function(require,module,exports){
+},{"./str":78}],77:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -9026,7 +9037,7 @@ module.exports = {
   'hsv': new RegExp('^hsv\\(\\s*(0|[1-9]\\d?|[12]\\d\\d|3[0-5]\\d)\\s*,\\s*((0|[1-9]\\d?|100)%)\\s*,\\s*((0|[1-9]\\d?|100)%)\\s*\\)$')
 };
 
-},{}],79:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9108,4 +9119,4 @@ function toStyleObject(str) {
   return style;
 }
 
-},{}]},{},[68]);
+},{}]},{},[67]);

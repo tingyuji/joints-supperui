@@ -10,9 +10,9 @@ import ReactDom from 'react-dom';
 
 global.uiRequire = function (src) {
   if (src) {
-    return require('../../../lib/components/' + src)
+    return require('../../../src/components/' + src)
   } else {
-    return require('../../../lib/components')
+    return require('../../../src/components')
   }
 }
 

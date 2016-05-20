@@ -109,7 +109,6 @@ class Datetime extends ClickAway(Component) {
     today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
     let picker = this.refs.datepicker;
-    if(!picker.style){ picker.style = {} }
     picker.style.display = 'block';
     let height = getOuterHeight(picker);
 
@@ -137,7 +136,6 @@ class Datetime extends ClickAway(Component) {
     }
     setTimeout(() => {
       if (this.state.active === false) {
-        if(!this.refs.datepicker.style){ this.refs.datepicker.style = {} }
         this.refs.datepicker.style.display = 'none';
       }
     }, 500);

@@ -34,7 +34,10 @@ Object.keys(config.tasklines).forEach(function(tl){
         pipeObj.pipe(rename(cfg.name + ".min.css"))
       }
 
-      pipeObj.pipe(gulp.dest(cfg.rbConfig.css));
+      pipeObj.pipe(gulp.dest(cfg.rbConfig.css))
+        .on('end', function(){
+          console.log("完成构建 " + cfg.name + " 样式文件！");
+        });
     });
   });
 });
