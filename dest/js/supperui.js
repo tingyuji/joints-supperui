@@ -2833,6 +2833,8 @@ var Form = function (_Component) {
 
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.submit = _this.submit.bind(_this);
+    _this.reset = _this.reset.bind(_this);
+    _this.getData = _this.getData.bind(_this);
 
     _this.items = {};
     _this.validationPools = {};
@@ -2964,6 +2966,13 @@ var Form = function (_Component) {
       var data = (0, _obj.clone)(this.state.data);
 
       return data;
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.setState({
+        data: this.props.resetData || {}
+      });
     }
   }, {
     key: 'renderControls',
@@ -6319,6 +6328,8 @@ var Table = function (_Component) {
       total: null
     };
 
+    _this.getSelected = _this.getSelected.bind(_this);
+
     _this.onBodyScroll = _this.onBodyScroll.bind(_this);
     return _this;
   }
@@ -7865,6 +7876,7 @@ var fetchEnhance = exports.fetchEnhance = function fetchEnhance(ComposedComponen
         var _this2 = this;
 
         var component = this.component;
+        debugger;
         Object.keys(component).forEach(function (key) {
           if (!_this2.hasOwnProperty(key)) {
             var func = component[key];

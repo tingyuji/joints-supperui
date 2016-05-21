@@ -10,12 +10,17 @@ import { fetchEnhance } from '../_mixins/Fetch';
 class Table extends Component {
   constructor (props) {
     super(props);
+
     this.state = {
       index: props.pagination ? props.pagination.props.index : 1,
       data: props.data,
       sort: {},
       total: null
     };
+
+    this.getSelected = this.getSelected.bind(this);
+    this.getData = this.getData.bind(this);
+    this.sortData = this.sortData.bind(this);
 
     this.onBodyScroll = this.onBodyScroll.bind(this);
   }

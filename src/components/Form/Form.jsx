@@ -1,5 +1,7 @@
 'use strict';
 
+require('isomorphic-fetch');
+
 import React, { Children, Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import { forEach, deepEqual, hashcode, clone } from '../../utils/obj';
@@ -18,6 +20,8 @@ class Form extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submit = this.submit.bind(this);
+    this.reset = this.reset.bind(this);
+    this.getData = this.getData.bind(this);
 
     this.items = {};
     this.validationPools = {};
@@ -136,6 +140,12 @@ class Form extends Component {
     let data = clone(this.state.data);
 
     return data;
+  }
+
+  reset () {
+    this.setState({
+      data: this.props.resetData || {}
+    })
   }
 
   renderControls () {

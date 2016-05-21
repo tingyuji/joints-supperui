@@ -23,6 +23,14 @@ module.exports = class extends Component {
   }
 
   render () {
+    var _frm1Fetch = fetch('/static/json/form.json').then(res => {
+      return res.json();
+    });
+
+    var _sel1Fetch = fetch('/static/json/countries.json').then(res => {
+      return res.json();
+    });
+
     return (
       <div>
         <div className="header">
@@ -63,20 +71,23 @@ module.exports = class extends Component {
           </div>
           <br />
           <Example>
-<Form layout={this.state.layout}>
+<Form ref="frm1" layout={this.state.layout}>
   <FormControl name="text" label="text" type="text" grid={{width:6/24}} responsive="sm" min={2} max={6} />
   <FormControl name="email" label="email" type="email" />
   <FormControl name="select" label="select" data={["中国", "美国", "俄罗斯", "德国", "日本", "法国", "英格兰"]} type="select" />
   <FormSubmit>
     <span>提交</span>
   </FormSubmit>
+  <Button onClick={ ()=>{ console.log(this.refs.frm1.getData())} }>获取数据</Button>
+  &nbsp;&nbsp;
+  <Button onClick={ ()=>{ this.refs.frm1.reset()} }>重置</Button>
 </Form>
           </Example>
 
           <h2 className="subhead">获取 / 提交数据</h2>
 
           <Example>
-<Form onSubmit={formData => this.setState({ formData })} fetch={'json/form.json'}>
+<Form onSubmit={formData => this.setState({ formData })} fetch={ _frm1Fetch }>
   <FormControl name="text"
     label="text"
     type="text"
@@ -243,7 +254,7 @@ module.exports = class extends Component {
             默认使用name作为key，如果没有name，为提高性能，建议指定一个唯一的key(不能和name重复)
           </div>
           <Example>
-<Form button="确定" fetch={'json/form.json'} controls={[
+<Form button="确定" fetch={_frm1Fetch} controls={[
   { name: 'text', type: 'text', min: 3, max: 12, label: 'text', grid: 1/3 },
   { name: 'datetime', required: true, type: 'datetime', label: 'datetime', tip: '自定义tip文字' },
   { label: 'two items', key: 'twoitem', items: [
@@ -252,7 +263,7 @@ module.exports = class extends Component {
     { name: 'endTime', type: 'date' }
   ] },
   {
-    name: 'select', type: 'select', label: 'select', grid: 1/2, fetch: {url:"json/countries.json", cache:3600},
+    name: 'select', type: 'select', label: 'select', grid: 1/2, fetch: {_sel1Fetch},
     mult: true, filterAble: true, valueTpl: "{en}",
     optionTpl: '<img src="//lobos.github.io/react-ui/images/flags/{code}.png" /> {country}-{en}'
   }
