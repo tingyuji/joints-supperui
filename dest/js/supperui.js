@@ -2959,6 +2959,13 @@ var Form = function (_Component) {
       return true;
     }
   }, {
+    key: 'getData',
+    value: function getData() {
+      var data = (0, _obj.clone)(this.state.data);
+
+      return data;
+    }
+  }, {
     key: 'renderControls',
     value: function renderControls() {
       var _this4 = this;
@@ -4237,7 +4244,6 @@ exports.getGrid = getGrid;
 var GRIDS = {};
 var OFFSETS = {};
 var RESPONSIVE = {
-  'xs': '320',
   'sm': '568',
   'md': '768',
   'lg': '992',
@@ -4245,7 +4251,7 @@ var RESPONSIVE = {
 };
 var gridPre = 'cmpt-grid';
 var offsetPre = 'cmpt-offset';
-var defaultResponsive = 'xs';
+var defaultResponsive = 'md';
 
 function setOptions(options) {
   if (!options) {
@@ -4666,6 +4672,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var CALLBACK_MESSAGE = "CALLBACK_MESSAGE";
 var ADD_MESSAGE = "EB3A79637B40";
 var REMOVE_MESSAGE = "73D4EF15DF50";
 var CLEAR_MESSAGE = "73D4EF15DF52";
@@ -4763,29 +4770,33 @@ var Message = function (_React$Component2) {
       if (!messageContainer) {
         createContainer();
       }
+
       _pubsubJs2.default.publish(ADD_MESSAGE, {
         content: content,
         type: type || 'info'
       });
 
       if (typeof cb === "function") {
-        cb();
+        _pubsubJs2.default.publish(CALLBACK_MESSAGE, cb, {
+          content: content,
+          type: type || 'info'
+        });
       }
     }
   }, {
     key: 'success',
     value: function success(content, cb) {
-      show(content, "success", cb);
+      Message.show(content, "success", cb);
     }
   }, {
     key: 'error',
-    value: function error(content) {
-      show(content, "error", cb);
+    value: function error(content, cb) {
+      Message.show(content, "error", cb);
     }
   }, {
     key: 'warning',
-    value: function warning(content) {
-      show(content, "warning", cb);
+    value: function warning(content, cb) {
+      Message.show(content, "warning", cb);
     }
   }]);
 
@@ -4808,6 +4819,12 @@ function createContainer() {
   messageContainer = document.createElement('div');
   document.body.appendChild(messageContainer);
 }
+
+_pubsubJs2.default.subscribe(CALLBACK_MESSAGE, function (topic, cb, data) {
+  if (typeof cb === "function") {
+    cb(topic, data);
+  }
+});
 
 _pubsubJs2.default.subscribe(ADD_MESSAGE, function (topic, data) {
   messages = [].concat(_toConsumableArray(messages), [data]);

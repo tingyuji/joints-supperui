@@ -132,6 +132,12 @@ class Form extends Component {
     return true;
   }
 
+  getData () {
+    let data = clone(this.state.data);
+
+    return data;
+  }
+
   renderControls () {
     const { data } = this.state;
     const { hintType, controls, disabled, layout } = this.props;

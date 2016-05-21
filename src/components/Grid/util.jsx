@@ -3,7 +3,6 @@
 const GRIDS = {};
 const OFFSETS = {};
 const RESPONSIVE = {
-  'xs': '320',
   'sm': '568',
   'md': '768',
   'lg': '992',
@@ -11,7 +10,7 @@ const RESPONSIVE = {
 };
 let gridPre = 'cmpt-grid';
 let offsetPre = 'cmpt-offset';
-let defaultResponsive = 'xs';
+let defaultResponsive = 'md';
 
 export function setOptions(options) {
   if (!options) {
