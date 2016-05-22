@@ -125,7 +125,7 @@ export const enhance = (ComposedComponent) => {
       if (!props || typeof props !== 'object' || props.nativeEvent) {
         props = this.props;
       }
-      if (typeof value === 'object' && value.nativeEvent) {
+      if (typeof value === 'object' && value && value.nativeEvent) {
         value = value.target.value;
       }
       let { itemChange, onChange } = props;
