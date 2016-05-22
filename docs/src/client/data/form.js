@@ -1,0 +1,21 @@
+module.exports = {
+  "text": "text1",
+  "email": "test1@example.com",
+  "alpha": "abcde",
+  "alphanum": "abcde12342",
+  "integer": 12343,
+  "number": 12343.56,
+  "url": "http://www.google1.com",
+  "readonly": "can't edit1",
+  "checkboxgroup": "nanjing,beijing",
+  "checkbox": 2,
+  "radiogroup": "guangzhou",
+  "datetime": "2015-03-22 00:10:20",
+  "rating": 4,
+  "formitem": "form item1",
+  "select": "China,Cuba",
+  "textarea": "long text2",
+  "tree": "user_edit",
+  "startTime": "2017-03-12",
+  "endTime": "2017-07-22"
+}

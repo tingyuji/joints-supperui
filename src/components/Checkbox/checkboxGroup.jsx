@@ -4,7 +4,7 @@ import React, { Component, PropTypes, Children } from 'react';
 import classnames from 'classnames';
 import { Checkbox } from './checkbox';
 import { toArray } from '../../utils/str';
-import { deepEqual, toTextValue, hashcode } from '../../utils/obj';
+import { deepEqual, toTextValue, hashcode, clone } from '../../utils/obj';
 import { register } from '../Form';
 
 export class CheckboxGroup extends Component {
@@ -20,12 +20,29 @@ export class CheckboxGroup extends Component {
   }
  
   componentWillReceiveProps (nextProps) {
-    if (!deepEqual(nextProps.value, this.props.value)) {
+    let _isValueChanged = !deepEqual(nextProps.value, this.props.value);
+    let _isDataChanged = !deepEqual(nextProps.data, this.getRealData());
+
+    if (_isDataChanged) {
+      this.setState({ data: this.formatData(nextProps.data) }, function(){
+        if (_isValueChanged) {
+          this.setValue(nextProps.value);
+        }
+      });
+    } else if (_isValueChanged) {
       this.setValue(nextProps.value);
     }
-    if (!deepEqual(nextProps.data, this.props.data)) {
-      this.setState({ data: this.formatData(nextProps.data) });
-    }
+  }
+
+  getRealData (){
+    let _data = clone(this.props.data);
+
+    delete(_data.$checked);
+    delete(_data.$value);
+    delete(_data.$text);
+    delete(_data.$key);
+
+    return _data;
   }
 
   setValue (value) {

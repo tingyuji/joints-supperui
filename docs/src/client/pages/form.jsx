@@ -3,6 +3,8 @@
 import React, {Component} from 'react';
 import Code from '../Code';
 import Example from '../Example';
+import textValueData from '../data/text-value';
+import formData from '../data/form';
 const {Form, FormControl, Button, FormSubmit, Icon, Input, Datepicker, DatepickerPair, RadioGroup, FormItem} = global.uiRequire();
 
 module.exports = class extends Component {
@@ -23,10 +25,6 @@ module.exports = class extends Component {
   }
 
   render () {
-    var _frm1Fetch = fetch('/static/json/form.json').then(res => {
-      return res.json();
-    });
-
     var _sel1Fetch = fetch('/static/json/countries.json').then(res => {
       return res.json();
     });
@@ -87,7 +85,7 @@ module.exports = class extends Component {
           <h2 className="subhead">获取 / 提交数据</h2>
 
           <Example>
-<Form onSubmit={formData => this.setState({ formData })} fetch={ _frm1Fetch }>
+<Form ref="frm1" onSubmit={formData => this.setState({ formData })} data={ formData }>
   <FormControl name="text"
     label="text"
     type="text"
@@ -96,7 +94,7 @@ module.exports = class extends Component {
     max={6} />
 
   <FormControl label="email">
-    <span className="rct-input-group">
+    <span className="cmpt-input-group">
       <span className="addon"><Icon icon="email" /></span>
       <Input name="email" type="email" />
     </span>
@@ -186,13 +184,13 @@ module.exports = class extends Component {
   <FormControl name="checkboxgroup"
     required
     min={2}
-    fetch={{url: "json/text-value.json", cache: 3600}}
+    data={textValueData}
     label="checkbox group"
     type="checkbox-group" />
 
   <FormControl name="radiogroup"
     required
-    fetch={{url: "json/text-value.json", cache: 3600}}
+    data={textValueData}
     label="radio group"
     inline={false}
     type="radio-group" />
@@ -217,7 +215,7 @@ module.exports = class extends Component {
 
   <FormControl label="FormItem">
     <FormItem name="formitem" required max={10}>
-      <input className="rct-form-control" type="text" />
+      <input className="cmpt-form-control" type="text" />
     </FormItem>
   </FormControl>
 
@@ -238,11 +236,64 @@ module.exports = class extends Component {
     rows={5}
     max={100}
     type="textarea" />
+
+  <FormControl>
+    <Button onClick={ ()=>{ 
+      this.refs.frm1.setData({
+        "text": "text1",
+        "email": "test1@example.com",
+        "alpha": "abcde",
+        "alphanum": "abcde12342",
+        "integer": 12343,
+        "number": 12343.56,
+        "url": "http://www.google1.com",
+        "readonly": "can't edit1",
+        "checkboxgroup": "nanjing,shenzhen",
+        "checkbox": 2,
+        "radiogroup": "guangzhou",
+        "datetime": "2015-03-22 00:10:20",
+        "rating": 4,
+        "formitem": "form item1",
+        "select": "China,Cuba",
+        "textarea": "long text2",
+        "tree": "user_edit",
+        "startTime": "2017-03-12",
+        "endTime": "2017-07-22"
+      });
+    } } >重设数据1</Button>
+    <Button onClick={ ()=>{ 
+      this.setState({
+        formData: {
+          "text": "text1",
+          "email": "test1@example.com",
+          "alpha": "abcde",
+          "alphanum": "abcde12342",
+          "integer": 12343,
+          "number": 12343.56,
+          "url": "http://www.google1.com",
+          "readonly": "can't edit1",
+          "checkboxgroup": "nanjing,guangzhou",
+          "checkbox": 2,
+          "radiogroup": "guangzhou",
+          "datetime": "2015-03-22 00:10:20",
+          "rating": 4,
+          "formitem": "form item1",
+          "select": "China,Cuba",
+          "textarea": "long text2",
+          "tree": "user_edit",
+          "startTime": "2017-03-12",
+          "endTime": "2017-07-22"
+        }
+      })
+    } } >重设数据2</Button>
+  </FormControl>
   
   <FormSubmit>
     <span>提交</span>
     <span>处理中</span>
   </FormSubmit>
+
+
 </Form>
 
 { this.state.formData && <Code>提交表单数据:<br />{JSON.stringify(this.state.formData, null, 4)}</Code> }
@@ -254,7 +305,7 @@ module.exports = class extends Component {
             默认使用name作为key，如果没有name，为提高性能，建议指定一个唯一的key(不能和name重复)
           </div>
           <Example>
-<Form button="确定" fetch={_frm1Fetch} controls={[
+<Form button="确定" data={formData} controls={[
   { name: 'text', type: 'text', min: 3, max: 12, label: 'text', grid: 1/3 },
   { name: 'datetime', required: true, type: 'datetime', label: 'datetime', tip: '自定义tip文字' },
   { label: 'two items', key: 'twoitem', items: [

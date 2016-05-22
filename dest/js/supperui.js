@@ -1658,12 +1658,30 @@ var CheckboxGroup = exports.CheckboxGroup = function (_Component) {
   _createClass(CheckboxGroup, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (!(0, _obj.deepEqual)(nextProps.value, this.props.value)) {
+      var _isValueChanged = !(0, _obj.deepEqual)(nextProps.value, this.props.value);
+      var _isDataChanged = !(0, _obj.deepEqual)(nextProps.data, this.getRealData());
+
+      if (_isDataChanged) {
+        this.setState({ data: this.formatData(nextProps.data) }, function () {
+          if (_isValueChanged) {
+            this.setValue(nextProps.value);
+          }
+        });
+      } else if (_isValueChanged) {
         this.setValue(nextProps.value);
       }
-      if (!(0, _obj.deepEqual)(nextProps.data, this.props.data)) {
-        this.setState({ data: this.formatData(nextProps.data) });
-      }
+    }
+  }, {
+    key: 'getRealData',
+    value: function getRealData() {
+      var _data = (0, _obj.clone)(this.props.data);
+
+      delete _data.$checked;
+      delete _data.$value;
+      delete _data.$text;
+      delete _data.$key;
+
+      return _data;
     }
   }, {
     key: 'setValue',

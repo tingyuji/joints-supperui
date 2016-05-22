@@ -45,7 +45,7 @@ module.exports = class extends Component {
   <Form layout="aligned" data={{input: 'init value'}}>
     <FormControl label="label文字">
       <FormItem required min={4} max={12} name="input">
-        <input className="rct-form-control" />
+        <input className="cmpt-form-control" />
       </FormItem>
     </FormControl>
   </Form>

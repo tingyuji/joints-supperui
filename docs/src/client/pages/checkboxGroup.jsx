@@ -4,10 +4,14 @@ import React, {Component} from 'react';
 import Code from '../Code';
 import Example from '../Example';
 import exampleData from '../data/text-value';
-const {CheckboxGroup, Checkbox, Icon} = global.uiRequire();
+const {CheckboxGroup, Checkbox, Icon, Button} = global.uiRequire();
 
-module.exports = class extends Component {
+module.exports = class extends React.Component {
   render () {
+    var _fetch1 = fetch('/static/json/text-value.json').then(res => {
+      return res.json();
+    });
+
     return (
       <div>
         <div className="header">
@@ -40,7 +44,7 @@ module.exports = class extends Component {
 
           <h2 className="subhead">默认结构数据</h2>
           <Example>
-<CheckboxGroup value="shenzhen,chongqing" data={[
+<CheckboxGroup ref="chkgp1" value="shenzhen,chongqing" data={[
   { "id": "nanjing", "text": "南京" },
   { "id": "beijing", "text": "北京" },
   { "id": "guangzhou", "text": "广州" },
@@ -49,6 +53,8 @@ module.exports = class extends Component {
   { "id": "chongqing", "text": "重庆" },
   { "id": "shanghai", "text": "上海" }
 ]} />
+
+<Button onClick={ ()=>{ this.refs.chkgp1.setValue("nanjing,guangzhou") } } >重设数据</Button>
           </Example>
 
           <h2 className="subhead">key value 结构数据</h2>
@@ -117,7 +123,7 @@ module.exports = class extends Component {
   onChange={(value)=>console.log(value)}
   inline={false}
   value="shanghai,chengdu"
-  fetch={{url: "json/text-value.json", cache: 3600}}
+  fetch={_fetch1}
 />
           </Example>
 
@@ -128,7 +134,7 @@ module.exports = class extends Component {
   onChange={(value)=>console.log(value)}
   sep="|"
   value="shanghai|chengdu"
-  fetch={{url: "json/text-value.json", cache: 3600}}
+  data={exampleData}
 />
           </Example>
 
@@ -148,3 +154,4 @@ module.exports = class extends Component {
     );
   }
 }
+
