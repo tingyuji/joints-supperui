@@ -1756,7 +1756,7 @@ var CheckboxGroup = exports.CheckboxGroup = function (_Component) {
       this.setState({ value: value, data: data });
 
       if (this.props.onChange) {
-        this.props.onChange(value);
+        this.props.onChange(value, this, data[index]);
       }
     }
   }, {
@@ -3298,6 +3298,7 @@ var Form = function (_Component) {
     _this.submit = _this.submit.bind(_this);
     _this.reset = _this.reset.bind(_this);
     _this.getData = _this.getData.bind(_this);
+    _this.validateField = _this.validateField.bind(_this);
 
     _this.items = {};
     _this.validationPools = {};
@@ -3350,6 +3351,8 @@ var Form = function (_Component) {
 
       _this.items[id].$validation = err;
     };
+
+    _this.validate = _this.validate.bind(_this);
     return _this;
   }
 
@@ -3379,6 +3382,20 @@ var Form = function (_Component) {
         }
         success = success && suc === true;
       });
+      return success;
+    }
+  }, {
+    key: 'validateField',
+    value: function validateField(name) {
+      var success = true;
+
+      (0, _obj.forEach)(this.items, function (item) {
+        if (item.name === name) {
+          success = item.validate();
+          return false;
+        }
+      });
+
       return success;
     }
   }, {
@@ -4176,6 +4193,9 @@ var enhance = exports.enhance = function enhance(ComposedComponent) {
 
       _this.valueType = getValueType(props.type);
       _this.handleChange = _this.handleChange.bind(_this);
+      _this.getValue = _this.getValue.bind(_this);
+      _this.setValue = _this.setValue.bind(_this);
+      _this.validate = _this.validate.bind(_this);
       return _this;
     }
 

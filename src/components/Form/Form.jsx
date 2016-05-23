@@ -22,6 +22,7 @@ class Form extends Component {
     this.submit = this.submit.bind(this);
     this.reset = this.reset.bind(this);
     this.getData = this.getData.bind(this);
+    this.validateField = this.validateField.bind(this);
 
     this.items = {};
     this.validationPools = {};
@@ -74,6 +75,8 @@ class Form extends Component {
 
       this.items[id].$validation = err;
     };
+
+    this.validate = this.validate.bind(this);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -97,6 +100,19 @@ class Form extends Component {
       }
       success = success && (suc === true);
     });
+    return success;
+  }
+
+  validateField (name) {
+    let success = true;
+
+    forEach(this.items, (item) => {
+      if(item.name === name){
+        success = item.validate();
+        return false;
+      }
+    });
+
     return success;
   }
 

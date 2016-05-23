@@ -112,7 +112,7 @@ export class CheckboxGroup extends Component {
     this.setState({ value, data });
 
     if (this.props.onChange) {
-      this.props.onChange(value);
+      this.props.onChange(value, this, data[index]);
     }
   }
 

@@ -20,6 +20,9 @@ export const enhance = (ComposedComponent) => {
 
       this.valueType = getValueType(props.type);
       this.handleChange = this.handleChange.bind(this);
+      this.getValue = this.getValue.bind(this);
+      this.setValue = this.setValue.bind(this);
+      this.validate = this.validate.bind(this);
     }
 
     componentWillMount () {
