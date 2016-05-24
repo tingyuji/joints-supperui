@@ -25,10 +25,6 @@ module.exports = class extends Component {
   }
 
   render () {
-    var _sel1Fetch = fetch('/static/json/countries.json').then(res => {
-      return res.json();
-    });
-
     return (
       <div>
         <div className="header">
@@ -85,7 +81,7 @@ module.exports = class extends Component {
           <h2 className="subhead">获取 / 提交数据</h2>
 
           <Example>
-<Form ref="frm1" onSubmit={formData => this.setState({ formData })} data={ formData }>
+<Form ref="frm1" onSubmit={formData => this.setState({ formData })} fetch={'/static/json/form.json'}>
   <FormControl name="text"
     label="text"
     type="text"
@@ -207,7 +203,7 @@ module.exports = class extends Component {
     name="select"
     label="select"
     type="select"
-    fetch={{url:"json/countries.json", cache:3600}}
+    fetch={{url:"/static/json/countries.json", cache:3600}}
     mult={true}
     filterAble={true}
     optionTpl='<img src="//lobos.github.io/react-ui/images/flags/{code}.png" /> {country}-{en}'
@@ -314,7 +310,7 @@ module.exports = class extends Component {
     { name: 'endTime', type: 'date' }
   ] },
   {
-    name: 'select', type: 'select', label: 'select', grid: 1/2, fetch: {_sel1Fetch},
+    name: 'select', type: 'select', label: 'select', grid: 1/2, fetch: {url:"/static/json/countries.json", cache:3600},
     mult: true, filterAble: true, valueTpl: "{en}",
     optionTpl: '<img src="//lobos.github.io/react-ui/images/flags/{code}.png" /> {country}-{en}'
   }

@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Datetime from './Datetime';
-import { shallowEqual } from '../../utils/obj';
+import {Obj}  from 'supperutils';
 import { register } from '../Form/enhance';
+
+const { shallowEqual } = Obj;
 
 class Datepicker extends React.Component {
   constructor (props) {

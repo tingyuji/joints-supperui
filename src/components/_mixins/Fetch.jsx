@@ -1,7 +1,9 @@
 'use strict';
 
 import React, { Component, PropTypes } from 'react';
-import { deepEqual, clone } from '../../utils/obj';
+import { Obj, Refetch } from 'supperutils';
+
+const { deepEqual, clone } = Obj;
 
 export const FETCH_PENDING = 'pending';
 export const FETCH_SUCCESS = 'success';
@@ -84,29 +86,28 @@ export const fetchEnhance = (ComposedComponent) => {
 
       this.setState({ fetchStatus: FETCH_PENDING });
 
-      if (typeof fetch.then ==='function' || typeof fetch === 'function') {
+      if (typeof fetch === 'function') {
         fetch.then((data) => {
           this.setData(data);
         });
         return;
       }
 
-      // TODO: fetch配置管理
-      // if (typeof fetch === 'string') {
-      //   fetch = { url: fetch };
-      // }
-      // let { method='get', url, data, then, ...options } = fetch;
-      // let request = refetch[method](url, data, options).then(peerData.bind(request));
+      if (typeof fetch === 'string') {
+        fetch = { url: fetch };
+      }
+      let { method='get', url, data, then, ...options } = fetch;
+      let request = Refetch[method](url, data, options).then(peerData.bind(request));
 
-      // // handle response
-      // if (then) { request = request.then(then); }
-      // request.then((data) => {
-      //   this.setData(data);
-      // })
-      // .catch((err) => {
-      //   console.warn(err);
-      //   this.setData(new Error());
-      // });
+      // handle response
+      if (then) { request = request.then(then); }
+      request.then((data) => {
+        this.setData(data);
+      })
+      .catch((err) => {
+        console.warn(err);
+        this.setData(new Error());
+      });
     }
 
     setData (data) {

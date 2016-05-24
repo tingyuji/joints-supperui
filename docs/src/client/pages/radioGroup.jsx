@@ -112,7 +112,7 @@ module.exports = class extends Component {
           <Example>
 <RadioGroup inline={true}
   value="chengdu"
-  fetch={{url:"json/text-value.json", cache: 3600 }} />
+  fetch={{url:"/static/json/text-value.json", cache: 3600 }} />
           </Example>
 
           <h2 className="subhead">data && children</h2>

@@ -1,6 +1,7 @@
-import SupperUI from './components';
-import React    from 'react';
-import ReactDOM from 'react-dom';
+import React       from 'react';
+import ReactDOM    from 'react-dom';
+import SupperUtils from 'supperutils';
+import SupperUI    from './components';
 
 ;(function() {
   var g;
@@ -17,7 +18,8 @@ import ReactDOM from 'react-dom';
     g = this;
   }
 
-  g.React    = React;
-  g.ReactDOM = ReactDOM;
-  g.SupperUI = SupperUI;
+  g.React        = React;
+  g.ReactDOM     = ReactDOM;
+  g.SupperUtils  = SupperUtils;
+  g.SupperUI     = SupperUI;
 })();

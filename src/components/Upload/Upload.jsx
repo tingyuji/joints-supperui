@@ -2,12 +2,13 @@
 
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import Dom                 from '../../utils/dom';
-import { nextUid, format } from '../../utils/str';
-import { getLang }         from '../../locals';
+import { Dom, Str } from 'supperutils';
 import { getGrid }         from '../Grid/util';
+import { getLang }         from '../../locals';
 import { register }        from '../Form/enhance';
 import upload, {getUpInfo} from './util';
+
+const { nextUid, format } = Str;
 
 class Upload extends Component {
   constructor (props) {
@@ -87,11 +88,8 @@ class Upload extends Component {
       };
 
       if (autoUpload) {
-        // this.uploadFile(file, id, function(null, xhr){
-        //   files[id].xhr = xhr;
-        // });
+        files[id].xhr = this.uploadFile(file, id);
       }
-      
       this.setState({ files });
     });
   }
@@ -111,14 +109,13 @@ class Upload extends Component {
     this.handleChange();
   }
 
-  uploadFile (file, id, callback) {
+  uploadFile (file, id) {
     let { onUpload } = this.props;
     return upload({
       url: this.props.action,
       name: this.props.name,
       cors: this.props.cors,
       params: this.props.params,
-      uploadParams: this.props.uploadParams,
       withCredentials: this.props.withCredentials,
       file: file.files[0],
       onProgress: (e) => {

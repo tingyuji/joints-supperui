@@ -3,9 +3,13 @@
 import React, { Component, PropTypes, Children } from 'react';
 import classnames from 'classnames';
 import { Checkbox } from './checkbox';
-import { toArray } from '../../utils/str';
-import { deepEqual, toTextValue, hashcode, clone } from '../../utils/obj';
+import {Str, Obj} from 'supperutils'
 import { register } from '../Form';
+import { fetchEnhance, FETCH_SUCCESS } from '../_mixins/Fetch';
+import { getLang } from '../../locals';
+
+const { toArray } = Str;
+const { deepEqual, toTextValue, hashcode, clone } = Obj;
 
 export class CheckboxGroup extends Component {
   constructor (props) {
@@ -132,7 +136,16 @@ export class CheckboxGroup extends Component {
   }
 
   render () {
-    let { className, inline } = this.props;
+    let { className, fetchStatus, inline } = this.props;
+
+    // if get remote data pending or failure, render message
+    if (fetchStatus !== FETCH_SUCCESS) {
+      return (
+        <span className={`fetch-${fetchStatus}`}>
+          {getLang('fetch.status')[fetchStatus]}
+        </span>
+      );
+    }
 
     className = classnames(
       className,
@@ -185,5 +198,7 @@ CheckboxGroup.defaultProps = {
   textTpl: '{text}',
   valueTpl: '{id}'
 };
+
+CheckboxGroup = fetchEnhance(CheckboxGroup);
 
 module.exports = register(CheckboxGroup, 'checkbox-group', {valueType: 'array'});

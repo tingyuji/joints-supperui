@@ -2,9 +2,11 @@
 
 import React, { Component, createElement, PropTypes } from 'react';
 import classnames from 'classnames';
+import { Obj, Str } from 'supperutils';
 import * as FormUtil from './util';
-import { shallowEqual } from '../../utils/obj';
-import { toStyleObject, nextUid } from '../../utils/str';
+
+const { forEach, deepEqual, shallowEqual, hashcode, clone } = Obj;
+const { toStyleObject, nextUid } = Str;
 
 export const COMPONENTS = {};
 

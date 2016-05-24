@@ -2,14 +2,16 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import { toArray, substitute } from '../../utils/str';
-import { getOuterHeight, overView, withoutTransition } from '../../utils/dom';
-import { deepEqual, hashcode } from '../../utils/obj';
+import {Str, Dom, Obj} from 'supperutils'
 import ClickAway from '../_mixins/ClickAway';
 import { getGrid } from '../Grid/util';
 import { fetchEnhance, FETCH_SUCCESS } from '../_mixins/Fetch';
 import { register } from '../Form/enhance';
 import { getLang } from '../../locals';
+
+const { toArray, substitute } = Str;
+const { getOuterHeight, overView, withoutTransition } = Dom;
+const { deepEqual, hashcode } = Obj;
 
 class Select extends ClickAway(Component) {
   constructor (props) {

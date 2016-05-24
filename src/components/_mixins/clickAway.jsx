@@ -1,7 +1,9 @@
 'use strict';
 
 import ReactDOM from 'react-dom';
-import Dom, { isDescendant } from '../../utils/dom';
+import { Dom } from 'supperutils';
+
+const { isDescendant } = Dom;
 
 module.exports = (Component) => class extends Component {
   constructor (props) {

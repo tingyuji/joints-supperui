@@ -1,15 +1,15 @@
 'use strict';
 
-require('isomorphic-fetch');
-
 import React, { Children, Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
-import { forEach, deepEqual, hashcode, clone } from '../../utils/obj';
+import { Obj } from 'supperutils';
 import { getGrid } from '../Grid/util';
 import { getLang } from '../../locals';
 import { fetchEnhance, FETCH_SUCCESS } from '../_mixins/Fetch';
 import FormControl from './FormControl';
 import FormSubmit from './FormSubmit';
+
+const { forEach, deepEqual, hashcode, clone } = Obj;
 
 class Form extends Component {
   constructor (props) {

@@ -3,10 +3,12 @@
 import React, { Component, PropTypes, cloneElement, Children } from 'react';
 import classnames from 'classnames';
 import { COMPONENTS, getValueType } from './enhance';
-import { forEach, shallowEqual, hashcode, merge } from '../../utils/obj';
-import { format } from '../../utils/str';
+import { Obj, Str } from 'supperutils';
 import { getLang } from '../../locals';
 import { getGrid } from '../Grid/util';
+
+const { forEach, shallowEqual, hashcode, merge } = Obj;
+const { format } = Str;
 
 function setHint(hints, key, value) {
   let text = getLang('validation.hints.' + key, null);

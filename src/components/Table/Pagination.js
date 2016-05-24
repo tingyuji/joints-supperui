@@ -2,7 +2,9 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import { forEach } from '../../utils/obj';
+import { Obj } from 'supperutils';
+
+const { forEach } = Obj;
 
 class Pagination extends Component {
   constructor (props) {

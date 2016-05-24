@@ -4,12 +4,14 @@ import classnames from 'classnames';
 import React, { Component, PropTypes, DOM } from 'react';
 import ReactDOM from 'react-dom';
 import PubSub from 'pubsub-js';
+import { Str } from 'supperutils';
 import {Button} from '../button';
 import {Overlay} from '../overlay';
-import { nextUid } from '../../utils/str';
 import objectAssign from 'object-assign';
 
 import {getLang} from '../../locals';
+
+const { nextUid } = Str;
 
 const ADD_MODAL = 'id39hxqm';
 const REMOVE_MODAL = 'id39i40m';

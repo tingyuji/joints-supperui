@@ -1,6 +1,8 @@
 'use strict';
 
-import {merge} from '../utils/obj';
+import { Obj } from 'supperutils';
+
+const {merge} = Obj;
 
 let langDataMap = {
   'zh-cn': require('./zh-cn')

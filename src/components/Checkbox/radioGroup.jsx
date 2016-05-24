@@ -2,9 +2,13 @@
 
 import React, { Component, PropTypes, Children } from 'react';
 import classnames from 'classnames';
-import { deepEqual, toTextValue, hashcode } from '../../utils/obj';
+import {Obj} from 'supperutils';
 import Radio from './radio';
 import { register } from '../Form';
+import { fetchEnhance, FETCH_SUCCESS } from '../_mixins/Fetch';
+import { getLang } from '../../locals';
+
+const { deepEqual, toTextValue, hashcode } = Obj;
 
 function transformValue(value) {
   if (value === null || value === undefined) {
@@ -85,6 +89,11 @@ export class RadioGroup extends Component {
   render () {
     let { className, fetchStatus, inline, readOnly } = this.props;
 
+    // if get remote data pending or failure, render message
+    if (fetchStatus !== FETCH_SUCCESS) {
+      return <span className={`fetch-${fetchStatus}`}>{getLang('fetch.status')[fetchStatus]}</span>;
+    }
+
     className = classnames(
       className,
       'cmpt-radio-group',
@@ -139,5 +148,7 @@ RadioGroup.defaultProps = {
   valueTpl: '{id}',
   inline: true
 };
+
+RadioGroup = fetchEnhance(RadioGroup);
 
 module.exports = register(RadioGroup, 'radio-group');

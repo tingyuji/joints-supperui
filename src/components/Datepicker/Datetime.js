@@ -2,13 +2,15 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import { overView, getOuterHeight } from '../../utils/dom';
+import {Dom, Dt}  from 'supperutils';
 import * as datetime from '../../utils/dt';
 import ClickAway from '../_mixins/ClickAway';
 import TimeSet from './TimeSet';
 import Clock from './Clock';
 
 import { getLang } from '../../locals';
+
+const { overView, getOuterHeight } = Dom;
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -87,7 +89,7 @@ class Datetime extends ClickAway(Component) {
 
   formatValue (value) {
     if (this.props.format) {
-      return datetime.format(value, this.props.format);
+      return Dt.format(value, this.props.format);
     }
 
     let format = datetime.getDatetime;

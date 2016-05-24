@@ -2,8 +2,11 @@
 
 import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
-import { substitute } from '../../utils/str';
-import { deepEqual, hashcode } from '../../utils/obj';
+import { Obj, Str } from 'supperutils';
+
+const { substitute } = Str;
+const { deepEqual, hashcode } = Obj;
+
 import TableHeader from './TableHeader';
 import { fetchEnhance } from '../_mixins/Fetch';
 

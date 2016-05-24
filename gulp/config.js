@@ -22,13 +22,13 @@ var config = {
         bundleConfigs: [{
           entries: src + '/index.jsx',
           dest: dest + "/js",
-          externals: ['react', 'react-dom'],
+          externals: ['react', 'react-dom', 'supperutils'],
           compress: true,
           outputName: 'supperui.js',
           compressedOutputName: 'supperui.min.js'
         }, {
           dest: dest + "/js",
-          requires: ['react', 'react-dom'],
+          requires: ['react', 'react-dom', 'supperutils'],
           compress: true,
           outputName: 'supperui-lib.js',
           compressedOutputName: 'supperui-lib.min.js'

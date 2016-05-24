@@ -1,8 +1,10 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { shallowEqual } from '../../utils/obj';
+import {Obj} from 'supperutils';
 import Datepicker from './index';
+
+const { shallowEqual } = Obj;
 
 class Pair extends React.Component {
   constructor (props) {

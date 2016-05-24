@@ -1,8 +1,7 @@
 'use strict';
 
-require('isomorphic-fetch');
-
 import React, { Component } from 'react';
+import { Refetch } from 'supperutils';
 const {Table, Modal, Pagination, Checkbox, RadioGroup} = global.uiRequire();
 
 import Code from '../Code';
@@ -24,15 +23,12 @@ module.exports = class extends Component {
   }
 
   componentWillMount () {
-    let _fetch = fetch('/static/json/table.json').then(res => {
-      return res.json();
-    }).then(json => {
-      this.setState({ total: json.length });
-
-      return json;
+    let fetch = Refetch.get('/static/json/table.json', null, {catch: 3600});
+    fetch.then(res => {
+      this.setState({ total: res.length });
+      return res;
     });
-
-    this.setState({ fetch: _fetch });
+    this.setState({ fetch });
   }
 
   getCheckedName () {

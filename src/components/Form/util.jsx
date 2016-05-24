@@ -1,9 +1,11 @@
 'use strict';
 
-import Regs from '../../utils/regex';
-import { format, toArray } from '../../utils/str';
+import { Regex, Str } from 'supperutils';
 
 import { getLang } from '../../locals';
+
+const Regs = Regex;
+const { format, toArray } = Str;
 
 function handleError(label, value, key, tip) {
   // handle error

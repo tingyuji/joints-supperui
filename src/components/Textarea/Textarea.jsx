@@ -2,9 +2,11 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import { Dom } from 'supperutils';
 import { getGrid } from '../Grid/util';
 import { register } from '../Form/enhance';
-import { computedStyle, getLineHeight } from '../../utils/dom';
+
+const { computedStyle, getLineHeight } = Dom;
 
 class Textarea extends Component {
   constructor (props) {

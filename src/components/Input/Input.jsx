@@ -2,9 +2,11 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Regs from '../../utils/regex';
+import {Regex} from 'supperutils';
 import { getGrid } from '../Grid/util';
 import { register } from '../Form';
+
+const Regs = Regex;
 
 export class Input extends Component {
   constructor (props) {

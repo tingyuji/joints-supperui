@@ -8,10 +8,6 @@ const {CheckboxGroup, Checkbox, Icon, Button} = global.uiRequire();
 
 module.exports = class extends React.Component {
   render () {
-    var _fetch1 = fetch('/static/json/text-value.json').then(res => {
-      return res.json();
-    });
-
     return (
       <div>
         <div className="header">
@@ -113,7 +109,7 @@ module.exports = class extends React.Component {
 <CheckboxGroup 
   onChange={(value)=>console.log(value)}
   value="shanghai,chengdu"
-  fetch={{url: "json/text-value.json", cache: 3600}}
+  fetch={{url: "/static/json/text-value.json", cache: 3600}}
 />
           </Example>
 
@@ -123,7 +119,7 @@ module.exports = class extends React.Component {
   onChange={(value)=>console.log(value)}
   inline={false}
   value="shanghai,chengdu"
-  fetch={_fetch1}
+  fetch={"/static/json/text-value.json"}
 />
           </Example>
 
