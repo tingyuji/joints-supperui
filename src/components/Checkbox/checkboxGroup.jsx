@@ -108,7 +108,7 @@ export class CheckboxGroup extends Component {
     return value;
   }
 
-  handleChange (value, checked, index) {
+  handleChange (value, checked, index, event) {
     let data = this.state.data;
     data[index].$checked = checked;
     value = this.getValue(this.props.sep, data);
@@ -116,7 +116,7 @@ export class CheckboxGroup extends Component {
     this.setState({ value, data });
 
     if (this.props.onChange) {
-      this.props.onChange(value, this, data[index]);
+      this.props.onChange(value, this, data[index], event);
     }
   }
 

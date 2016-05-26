@@ -1183,6 +1183,10 @@ var _supperutils = require('supperutils');
 
 var _Form = require('../Form');
 
+var _Fetch = require('../_mixins/Fetch');
+
+var _locals = require('../../locals');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -1341,8 +1345,18 @@ var CheckboxGroup = exports.CheckboxGroup = function (_Component) {
     value: function render() {
       var _props = this.props;
       var className = _props.className;
+      var fetchStatus = _props.fetchStatus;
       var inline = _props.inline;
 
+      // if get remote data pending or failure, render message
+
+      if (fetchStatus !== _Fetch.FETCH_SUCCESS) {
+        return _react2.default.createElement(
+          'span',
+          { className: 'fetch-' + fetchStatus },
+          (0, _locals.getLang)('fetch.status')[fetchStatus]
+        );
+      }
 
       className = (0, _classnames2.default)(className, 'cmpt-checkbox-group', {
         'cmpt-inline': inline,
@@ -1383,9 +1397,11 @@ CheckboxGroup.defaultProps = {
   valueTpl: '{id}'
 };
 
+exports.CheckboxGroup = CheckboxGroup = (0, _Fetch.fetchEnhance)(CheckboxGroup);
+
 module.exports = (0, _Form.register)(CheckboxGroup, 'checkbox-group', { valueType: 'array' });
 
-},{"../Form":29,"./checkbox":13,"classnames":1,"react":"react","supperutils":"supperutils"}],15:[function(require,module,exports){
+},{"../../locals":68,"../Form":29,"../_mixins/Fetch":61,"./checkbox":13,"classnames":1,"react":"react","supperutils":"supperutils"}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1535,6 +1551,10 @@ var _radio2 = _interopRequireDefault(_radio);
 
 var _Form = require('../Form');
 
+var _Fetch = require('../_mixins/Fetch');
+
+var _locals = require('../../locals');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -1640,6 +1660,15 @@ var RadioGroup = exports.RadioGroup = function (_Component) {
       var inline = _props.inline;
       var readOnly = _props.readOnly;
 
+      // if get remote data pending or failure, render message
+
+      if (fetchStatus !== _Fetch.FETCH_SUCCESS) {
+        return _react2.default.createElement(
+          'span',
+          { className: 'fetch-' + fetchStatus },
+          (0, _locals.getLang)('fetch.status')[fetchStatus]
+        );
+      }
 
       className = (0, _classnames2.default)(className, 'cmpt-radio-group', { 'cmpt-inline': inline });
       var items = this.state.data.map(function (item) {
@@ -1683,9 +1712,11 @@ RadioGroup.defaultProps = {
   inline: true
 };
 
+exports.RadioGroup = RadioGroup = (0, _Fetch.fetchEnhance)(RadioGroup);
+
 module.exports = (0, _Form.register)(RadioGroup, 'radio-group');
 
-},{"../Form":29,"./radio":16,"classnames":1,"react":"react","supperutils":"supperutils"}],18:[function(require,module,exports){
+},{"../../locals":68,"../Form":29,"../_mixins/Fetch":61,"./radio":16,"classnames":1,"react":"react","supperutils":"supperutils"}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1951,8 +1982,8 @@ var Datetime = function (_ClickAway) {
       active: false,
       popup: false,
       stage: props.type === TIME ? 'clock' : 'day',
-      current: _supperutils.Dt.convert(value, new Date()),
-      value: _supperutils.Dt.convert(value, null)
+      current: datetime.convert(value, new Date()),
+      value: datetime.convert(value, null)
     };
 
     _this.timeChange = _this.timeChange.bind(_this);
@@ -1981,7 +2012,7 @@ var Datetime = function (_ClickAway) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.value !== this.props.value) {
-        this.setState({ value: _supperutils.Dt.convert(nextProps.value) });
+        this.setState({ value: datetime.convert(nextProps.value) });
       }
       this.setMinMax(nextProps);
     }
@@ -1989,8 +2020,8 @@ var Datetime = function (_ClickAway) {
     key: 'setMinMax',
     value: function setMinMax(props) {
       var zero = new Date(0),
-          min = _supperutils.Dt.convert(props.min, zero).getTime(),
-          max = _supperutils.Dt.convert(props.max, zero).getTime();
+          min = datetime.convert(props.min, zero).getTime(),
+          max = datetime.convert(props.max, zero).getTime();
       this.setState({ min: min, max: max });
     }
   }, {
@@ -2016,7 +2047,7 @@ var Datetime = function (_ClickAway) {
   }, {
     key: 'setValue',
     value: function setValue(value) {
-      value = _supperutils.Dt.convert(value, null);
+      value = datetime.convert(value, null);
       this.setState({ value: value });
     }
   }, {
@@ -3757,10 +3788,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var forEach = _supperutils.Obj.forEach;
 var deepEqual = _supperutils.Obj.deepEqual;
+var shallowEqual = _supperutils.Obj.shallowEqual;
 var hashcode = _supperutils.Obj.hashcode;
 var clone = _supperutils.Obj.clone;
 var toStyleObject = _supperutils.Str.toStyleObject;
-var nextUide = _supperutils.Str.nextUide;
+var nextUid = _supperutils.Str.nextUid;
 var COMPONENTS = exports.COMPONENTS = {};
 
 var enhance = exports.enhance = function enhance(ComposedComponent) {
@@ -7143,9 +7175,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _supperutils = require('supperutils');
 
-var _locals = require('../../locals');
-
 var _util = require('../Grid/util');
+
+var _locals = require('../../locals');
 
 var _enhance = require('../Form/enhance');
 
@@ -7263,11 +7295,8 @@ var Upload = function (_Component) {
         };
 
         if (autoUpload) {
-          // this.uploadFile(file, id, function(null, xhr){
-          //   files[id].xhr = xhr;
-          // });
+          files[id].xhr = _this2.uploadFile(file, id);
         }
-
         _this2.setState({ files: files });
       });
     }
@@ -7289,7 +7318,7 @@ var Upload = function (_Component) {
     }
   }, {
     key: 'uploadFile',
-    value: function uploadFile(file, id, callback) {
+    value: function uploadFile(file, id) {
       var _this3 = this;
 
       var onUpload = this.props.onUpload;
@@ -7299,7 +7328,6 @@ var Upload = function (_Component) {
         name: this.props.name,
         cors: this.props.cors,
         params: this.props.params,
-        uploadParams: this.props.uploadParams,
         withCredentials: this.props.withCredentials,
         file: file.files[0],
         onProgress: function onProgress(e) {
@@ -8021,21 +8049,30 @@ var fetchEnhance = exports.fetchEnhance = function fetchEnhance(ComposedComponen
           return;
         }
 
-        // if (typeof fetch === 'string') {
-        //   fetch = { url: fetch };
-        // }
-        // let { method='get', url, data, then, ...options } = fetch;
-        // let request = refetch[method](url, data, options).then(peerData.bind(request));
+        if (typeof fetch === 'string') {
+          fetch = { url: fetch };
+        }
+        var _fetch = fetch;
+        var _fetch$method = _fetch.method;
+        var method = _fetch$method === undefined ? 'get' : _fetch$method;
+        var url = _fetch.url;
+        var data = _fetch.data;
+        var then = _fetch.then;
 
-        // // handle response
-        // if (then) { request = request.then(then); }
-        // request.then((data) => {
-        //   this.setData(data);
-        // })
-        // .catch((err) => {
-        //   console.warn(err);
-        //   this.setData(new Error());
-        // });
+        var options = _objectWithoutProperties(_fetch, ['method', 'url', 'data', 'then']);
+
+        var request = _supperutils.Refetch[method](url, data, options).then(peerData.bind(request));
+
+        // handle response
+        if (then) {
+          request = request.then(then);
+        }
+        request.then(function (data) {
+          _this4.setData(data);
+        }).catch(function (err) {
+          console.warn(err);
+          _this4.setData(new Error());
+        });
       }
     }, {
       key: 'setData',
@@ -8470,6 +8507,7 @@ exports.getDatetime = getDatetime;
 exports.getDate = getDate;
 exports.getFullYear = getFullYear;
 exports.getTime = getTime;
+exports.convert = convert;
 
 var _supperutils = require('supperutils');
 
@@ -8504,6 +8542,39 @@ function getFullYear(d) {
 
 function getTime(d) {
   return _supperutils.Dt.format(d, (0, _locals.getLang)('datetime.format.time'));
+}
+
+// string, unixtimestamp convert to Date
+function convert(obj, def) {
+  if (def === undefined) {
+    def = new Date();
+  }
+
+  if (!obj) {
+    return def;
+  }
+
+  if (obj instanceof Date) {
+    return obj;
+  }
+
+  if (/^[-+]?[0-9]+$/.test(obj)) {
+    obj = parseInt(obj);
+  } else {
+    obj = obj.replace(/-/g, '/');
+  }
+
+  if (/^\d?\d:\d?\d/.test(obj)) {
+    obj = getDate(new Date()) + ' ' + obj;
+  }
+
+  obj = new Date(obj);
+  // Invalid Date
+  if (isNaN(obj.getTime())) {
+    obj = def;
+  }
+
+  return obj;
 }
 
 },{"../locals":68,"supperutils":"supperutils"}]},{},[67]);

@@ -34,7 +34,7 @@ export class Checkbox extends Component {
     setTimeout(() => {
       if (this.props.onChange) {
         let value = checked ? this.props.checkValue : undefined;
-        this.props.onChange(value, checked, this.props.index);
+        this.props.onChange(value, checked, this.props.index, event);
       }
     }, 0);
   }
