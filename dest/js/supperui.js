@@ -1090,7 +1090,7 @@ var Checkbox = exports.Checkbox = function (_Component) {
       setTimeout(function () {
         if (_this2.props.onChange) {
           var value = checked ? _this2.props.checkValue : undefined;
-          _this2.props.onChange(value, checked, _this2.props.index);
+          _this2.props.onChange(value, checked, _this2.props.index, event);
         }
       }, 0);
     }
@@ -1313,7 +1313,7 @@ var CheckboxGroup = exports.CheckboxGroup = function (_Component) {
     }
   }, {
     key: 'handleChange',
-    value: function handleChange(value, checked, index) {
+    value: function handleChange(value, checked, index, event) {
       var data = this.state.data;
       data[index].$checked = checked;
       value = this.getValue(this.props.sep, data);
@@ -1321,7 +1321,7 @@ var CheckboxGroup = exports.CheckboxGroup = function (_Component) {
       this.setState({ value: value, data: data });
 
       if (this.props.onChange) {
-        this.props.onChange(value, this, data[index]);
+        this.props.onChange(value, this, data[index], event);
       }
     }
   }, {
